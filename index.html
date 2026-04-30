@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>දේශීය වෙද්‍ය ශබ්දකෝෂය - පිවිසුම</title>
+    <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Abhaya Libre', serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .login-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            border-top: 5px solid #2e7d32;
+        }
+        .logo-text {
+            color: #1b5e20;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .sub-text {
+            color: #555;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        .step-box {
+            background: #f1f8e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #c5e1a5;
+        }
+        h3 {
+            margin-top: 0;
+            color: #33691e;
+            font-size: 20px;
+        }
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            font-family: inherit;
+        }
+        button {
+            background: #2e7d32;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+            font-family: inherit;
+            transition: 0.3s;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #1b5e20;
+        }
+        .whatsapp-btn {
+            background: #25D366;
+        }
+        .whatsapp-btn:hover {
+            background: #128C7E;
+        }
+        #error-msg {
+            color: red;
+            margin-top: 10px;
+            display: none;
+            font-weight: bold;
+        }
+        .footer-note {
+            font-size: 14px;
+            color: #0000FF;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <div class="logo-text">දේශීය වෙද්‍ය ශබ්දකෝෂය</div>
+    <div class="sub-text">වචන 22,500+ කින් සමන්විත ප්‍රථම ඩිජිටල් සංස්කරණය</div>
+
+    <div class="step-box">
+        <h3>1. ලියාපදිංචි වන්න</h3>
+        <input type="text" id="userName" placeholder="ඔබගේ නම">
+        <input type="tel" id="userPhone" placeholder="WhatsApp අංකය (උදා: 071...)">
+        <button class="whatsapp-btn" onclick="sendWhatsApp()">විස්තර යවා මුරපදය ලබාගන්න</button>
+    </div>
+
+    <div class="step-box">
+        <h3>2. ඇතුල් වන්න</h3>
+        <p style="font-size: 15px; color: #555;">ඔබට ලැබුණු මුරපදය (Passcode) ඇතුළත් කරන්න.</p>
+        <input type="password" id="passcode" placeholder="මුරපදය මෙහි ඇතුල්කරන්න">
+        <button onclick="unlockApp()">ශබ්දකෝෂය විවෘත කරන්න</button>
+        <div id="error-msg">මුරපදය වැරදියි! කරුණාකර නැවත පරීක්ෂා කරන්න.</div>
+    </div>
+
+    <div class="footer-note">
+        © 2026 Ruwan Gamaralalage | Digital Edition
+    </div>
+</div>
+
+<script>
+    // WhatsApp එකට විස්තර යවන Function එක
+    function sendWhatsApp() {
+        let name = document.getElementById('userName').value;
+        let phone = document.getElementById('userPhone').value;
+        
+        if(name.trim() === "" || phone.trim() === "") {
+            alert("කරුණාකර ඔබගේ නම සහ WhatsApp අංකය නිවැරදිව ඇතුළත් කරන්න.");
+            return;
+        }
+
+        // ඔයාගේ WhatsApp නම්බර් එක මෙතනට දාන්න (උදා: 94712345678)
+        let myWhatsAppNumber = "94760829235"; 
+        
+        let message = `ආයුබෝවන්! මම ${name}. මගේ WhatsApp අංකය: ${phone}. මට දේශීය වෙද්‍ය ශබ්දකෝෂයේ මුරපදය ලබා ගැනීමට අවශ්‍යයි.`;
+        let whatsappUrl = `https://wa.me/${myWhatsAppNumber}?text=${encodeURIComponent(message)}`;
+        
+        window.open(whatsappUrl, '_blank');
+    }
+
+    // Passcode එක ගහලා ඇප් එකට යන Function එක
+    function unlockApp() {
+        let code = document.getElementById('passcode').value;
+        
+        // මෙතන තියෙන "Weda2026" වෙනුවට ඔයාට ඕනේ රහස් මුරපදය දාගන්න.
+        if(code === "Weda2026") {
+            // ඇතුල් වුණා කියලා බ්‍රවුසර් එකේ සේව් කරගන්නවා
+            localStorage.setItem("isUnlocked", "true");
+            // ඩික්ෂනරියට යනවා
+            window.location.href = "dictionary.html";
+        } else {
+            // පාස්වර්ඩ් එක වැරදි නම්
+            document.getElementById('error-msg').style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "දේශීය වෛද්‍ය ශබ්දකෝෂය",
+  "short_name": "වෙද ශබ්දකෝෂය",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#fdfbf7",
+  "theme_color": "#1b4d3e",
+  "description": "පණ්ඩිත කිරිඇල්ලේ ඥානවිමල හිමියන්ගේ දේශීය වෛද්‍ය ශබ්දකෝෂය ඩිජිටල්කරණය - Ruwan Gamaralalage Project",
+  "icons": [
+    {
+      "src": "head.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "head.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
