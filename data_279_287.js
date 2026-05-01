@@ -98,7 +98,7 @@ const data_extra_279_287 = [
     { "word": "නෘපප්‍රිය", "meaning": "වටකේ, හිඳි, මඟුලුහුටු, අඹ, මහ ඉඳි", "category": "plant" },
     { "word": "නෘපප්‍රිය ඵල", "meaning": "වැටකොළු", "category": "plant" },
     { "word": "නෘපාංශුහු", "meaning": "මරිසුව, (මුරුංගා)වැල් මුරුංගා", "category": "plant" },
-    { "word": "නෙක්කන්ති", "meaning": "දේවදාර", "category": "plant" },
+    { "word": "නෙක්කන්ති", "meaning": "දේවදාර", "category": "plant", "scientific": "Cedrus deodra", "image": "images/__________devadara.jpg" },
     { "word": "නෙට්ටි", "meaning": "නැටි", "category": "plant" },
     { "word": "නෙබුල්", "meaning": "තිබුල් නම් ඔසු වර්ගය", "category": "plant" },
     { "word": "නෙබුමිනාලි", "meaning": "වසතැල්ල", "category": "plant" },
