@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+<script>
+    // මුරපදය ගහලා නැත්නම් ආයේ ගේට්ටුවටම (index.html) විසි කරනවා!
+    if(localStorage.getItem("isUnlocked") !== "true") {
+        window.location.href = "index.html";
+    }
+</script>    
+
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>දේශීය වෛද්‍ය ශබ්දකෝෂය - Ruwan Gamaralalage</title>
+    
+    <link rel="manifest" href="manifest.json"> 
+    
+<script src="data.js" defer></script>
+<script src="data_79_88.js" defer></script>
+<script src="data_89_98.js" defer></script>
+<script src="data_99_108.js" defer></script>
+<script src="data_109_115.js" defer></script>
+<script src="data_116_124.js" defer></script>
+<script src="data_125_134.js" defer></script>
+<script src="data_135_143.js" defer></script>
+<script src="data_144_152.js" defer></script>
+<script src="data_153_161.js" defer></script>
+<script src="data_162_171.js" defer></script>
+<script src="data_172_177.js" defer></script> 
+<script src="data_178_185.js" defer></script>
+<script src="data_186_193.js" defer></script>
+<script src="data_194_202.js" defer></script>
+<script src="data_203_210.js" defer></script>
+<script src="data_211_220.js" defer></script>
+<script src="data_221_230.js" defer></script>
+<script src="data_231_240.js" defer></script>
+<script src="data_241_250.js" defer></script>
+<script src="data_251_259.js" defer></script>
+<script src="data_260_269.js" defer></script>
+<script src="data_270_278.js" defer></script>
+<script src="data_279_287.js" defer></script>
+<script src="data_288_296.js" defer></script>
+<script src="data_297_305.js" defer></script>
+<script src="data_306_314.js" defer></script>
+<script src="data_315_324.js" defer></script>
+<script src="data_325_334.js" defer></script>
+<script src="data_335_344.js" defer></script>
+<script src="data_345_354.js" defer></script>
+<script src="data_355_364.js" defer></script>
+<script src="data_365_374.js" defer></script>
+<script src="data_375_384.js" defer></script>
+<script src="data_385_394.js" defer></script>
+<script src="data_395_404.js" defer></script>
+<script src="data_405_417.js" defer></script>
+<script src="data_418_427.js" defer></script>
+<script src="data_428_438.js" defer></script>
+<script src="data_439_449.js" defer></script>
+<script src="data_450_458.js" defer></script>
+<script src="data_459_470.js" defer></script>
+<script src="data_471_481.js" defer></script>
+<script src="data_482_492.js" defer></script>
+<script src="data_493_506.js" defer></script>
+<script src="data_507_513.js" defer></script>
+<script src="data_514_524.js" defer></script>
+    <style>
+        :root {
+            --primary-green: #1b4d3e; --accent-green: #2d5a27; --bg-cream: #fdfbf7;
+            --text-dark: #2c3e50; --card-white: #ffffff; --content-font-size: 18px; 
+        }
+        body.dark-mode { --bg-cream: #121212; --card-white: #1e1e1e; --text-dark: #e0e0e0; --primary-green: #81c784; }
+        body {
+            font-family: 'Segoe UI', 'Noto Sans Sinhala', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-cream); margin: 0; padding: 15px; color: var(--text-dark);
+            -webkit-user-select: none; user-select: none; transition: background 0.3s ease;
+        }
+        .container {
+            max-width: 850px; margin: 10px auto; background: var(--card-white);
+            padding: 30px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); border: 1px solid #e0d7c6;
+        }
+        header { text-align: center; margin-bottom: 20px; }
+        header img { max-width: 100%; height: auto; border-radius: 10px; }
+        .nav-menu { display: flex; justify-content: space-around; padding: 15px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+        .nav-item { color: var(--primary-green); font-weight: bold; font-size: 14px; cursor: pointer; transition: 0.3s; }
+        .exit-item { color: #e74c3c; font-weight: bold; }
+        .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        #wordCountDisplay { color: var(--accent-green); font-weight: bold; font-size: 15px; }
+        .font-controls button { background: var(--primary-green); color: white; border: none; padding: 5px 12px; border-radius: 6px; cursor: pointer; font-weight: bold; margin-left: 5px; }
+        .search-box { width: 100%; padding: 18px; border: 2px solid #dcdde1; border-radius: 15px; font-size: 18px; box-sizing: border-box; outline: none; background-color: #f9f9f9; }
+        .category-filter { display: flex; justify-content: center; gap: 8px; margin-top: 15px; margin-bottom: 10px; flex-wrap: wrap; }
+        .cat-btn { background: var(--card-white); border: 2px solid var(--primary-green); color: var(--primary-green); padding: 6px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 13px; }
+        .cat-btn.active { background: var(--primary-green); color: white; }
+        .alphabet-index { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; margin: 15px 0; padding: 10px; background: rgba(27, 77, 62, 0.05); border-radius: 12px; }
+        .letter-btn { background: var(--card-white); border: 1px solid #ddd; border-radius: 5px; padding: 5px 8px; font-size: 13px; cursor: pointer; color: var(--primary-green); font-weight: bold; }
+        #results { max-width: 850px; margin: 25px auto; }
+        .word-card { background: var(--card-white); padding: 25px; border-radius: 18px; margin-bottom: 20px; border-left: 6px solid var(--primary-green); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .word-title { font-weight: bold; color: var(--primary-green); font-size: 24px; display: block; margin-bottom: 10px; }
+        .meaning { font-size: var(--content-font-size); line-height: 1.9; color: #34495e; text-align: justify; }
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); }
+        .modal-content { background-color: var(--bg-cream); margin: 5% auto; padding: 30px; border-radius: 20px; width: 90%; max-width: 800px; max-height: 80vh; overflow-y: auto; position: relative; }
+        .close-btn { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header><img src="head.jpg" alt="Header"></header>
+    <div class="nav-menu">
+        <span class="nav-item" onclick="showModal('fav')">මගේ ප්‍රියතම</span>
+        <span class="nav-item" onclick="showModal('history')">දේශීය වෙදකමේ ඉතිහාසය</span>
+        <span class="nav-item" onclick="showModal('author')">කර්තෘ සටහන</span>
+        <span class="nav-item" onclick="showModal('compiler')">සම්පාදකගේ සටහන</span>
+        <span class="nav-item" onclick="showModal('appendix')">උපග්‍රන්ථය</span>
+        <span class="nav-item exit-item" onclick="exitApp()">පිටවීම</span>
+    </div>
+
+    <div class="top-bar">
+        <div class="font-controls">
+            <button onclick="changeFontSize(2)">A +</button>
+            <button onclick="changeFontSize(-2)">A -</button>
+            <button onclick="toggleDarkMode()">🌙</button>
+        </div>
+        <p id="wordCountDisplay">මුළු වචන සංඛ්‍යාව: <span id="wordCount">0</span></p>
+    </div>
+
+    <input type="text" id="searchInput" placeholder="මෙහි සොයන්න..." onkeyup="initSearch()" class="search-box">
+    
+    <div class="category-filter">
+        <button class="cat-btn active" onclick="filterByCategory('all', this)">සියල්ල</button>
+        <button class="cat-btn" onclick="filterByCategory('plant', this)">ඖෂධ පැළෑටි</button>
+        <button class="cat-btn" onclick="filterByCategory('symptom', this)">රෝග ලක්ෂණ</button>
+        <button class="cat-btn" onclick="filterByCategory('treatment', this)">ප්‍රතිකාර ක්‍රම</button>
+    </div>
+
+    <div class="alphabet-index" id="alphabetIndex"></div>
+</div>
+
+<div id="results"></div>
+
+<div id="infoModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle" style="color: var(--primary-green); border-bottom: 2px solid var(--primary-green);"></h2>
+        <div id="modalBody" style="margin-top: 15px; line-height: 1.8; text-align: justify;"></div>
+    </div>
+</div>
+
+<script>
+    let masterData = [];
+    let currentCategory = 'all';
+
+window.addEventListener('load', function() {
+        const data1 = (typeof dictionaryData !== 'undefined') ? dictionaryData : [];
+        const data2 = (typeof data_extra_79_88 !== 'undefined') ? data_extra_79_88 : [];
+        const data3 = (typeof data_extra_89_98 !== 'undefined') ? data_extra_89_98 : []; 
+        const data4 = (typeof data_extra_99_108 !== 'undefined') ? data_extra_99_108 : []; 
+        const data5 = (typeof data_extra_109_115 !== 'undefined') ? data_extra_109_115 : []; 
+        const data6 = (typeof data_extra_116_124 !== 'undefined') ? data_extra_116_124 : []; 
+        const data7 = (typeof data_extra_125_134 !== 'undefined') ? data_extra_125_134 : []; 
+        const data8 = (typeof data_extra_135_143 !== 'undefined') ? data_extra_135_143 : []; 
+        const data9 = (typeof data_extra_144_152 !== 'undefined') ? data_extra_144_152 : [];
+        const data10 = (typeof data_extra_153_161 !== 'undefined') ? data_extra_153_161 : [];
+        const data11 = (typeof data_extra_162_171 !== 'undefined') ? data_extra_162_171 : [];
+        const data12 = (typeof data_extra_172_177 !== 'undefined') ? data_extra_172_177 : [];
+        const data13 = (typeof data_extra_178_185 !== 'undefined') ? data_extra_178_185 : []; // දැන් මේක ඇතුළේ 184 ත් තියෙනවා
+        const data14 = (typeof data_extra_186_193 !== 'undefined') ? data_extra_186_193 : []; // අන්තිම ෆයිල් එක 14 වුණා
+        const data15 = (typeof data_extra_194_202 !== 'undefined') ? data_extra_194_202 : []; // පිටු අංක 194 සිට 202
+        const data16 = (typeof data_extra_203_210 !== 'undefined') ? data_extra_203_210 : []; // පිටු අංක 203 සිට 210    
+        const data17 = (typeof data_extra_211_220 !== 'undefined') ? data_extra_211_220 : []; // පිටු අංක 211 සිට 220       
+        const data18 = (typeof data_extra_221_230 !== 'undefined') ? data_extra_221_230 : []; // පිටු අංක 221 සිට 230       
+        const data19 = (typeof data_extra_231_240 !== 'undefined') ? data_extra_231_240 : []; // පිටු අංක 231 සිට 240       
+        const data20 = (typeof data_extra_241_250 !== 'undefined') ? data_extra_241_250 : []; // පිටු අංක 241 සිට 250 
+        const data21 = (typeof data_extra_251_259 !== 'undefined') ? data_extra_251_259 : []; // පිටු අංක 251 සිට 259     
+        const data22 = (typeof data_extra_260_269 !== 'undefined') ? data_extra_260_269 : []; // පිටු අංක 260 සිට 269     
+        const data23 = (typeof data_extra_270_278 !== 'undefined') ? data_extra_270_278 : []; // පිටු අංක 270 සිට 278  
+        const data24 = (typeof data_extra_279_287 !== 'undefined') ? data_extra_279_287 : []; // පිටු අංක 279 සිට 287
+        const data25 = (typeof data_extra_288_296 !== 'undefined') ? data_extra_288_296 : []; // පිටු අංක 288 සිට 296 
+        const data26 = (typeof data_extra_297_305 !== 'undefined') ? data_extra_297_305 : []; // පිටු අංක 297 සිට 305 
+        const data27 = (typeof data_extra_306_314 !== 'undefined') ? data_extra_306_314 : []; // පිටු අංක 306 සිට 314 
+        const data28 = (typeof data_extra_315_324 !== 'undefined') ? data_extra_315_324 : []; // පිටු අංක 315 සිට 324 
+        const data29 = (typeof data_extra_325_334 !== 'undefined') ? data_extra_325_334 : []; // පිටු අංක 325 සිට 334 
+        const data30 = (typeof data_extra_335_344 !== 'undefined') ? data_extra_335_344 : []; // පිටු අංක 335 සිට 344 
+        const data31 = (typeof data_extra_345_354 !== 'undefined') ? data_extra_345_354 : []; // පිටු අංක 345 සිට 355 
+	const data32 = (typeof data_extra_355_364 !== 'undefined') ? data_extra_355_364    : []; // පිටු අංක 355 සිට 364
+	const data33 = (typeof data_extra_365_374 !== 'undefined') ? data_extra_365_374    : []; // පිටු අංක 365 සිට 374
+	const data34 = (typeof data_extra_375_384 !== 'undefined') ? data_extra_375_384    : []; // පිටු අංක 375 සිට 384
+	const data35 = (typeof data_extra_385_394 !== 'undefined') ? data_extra_385_394    : []; // පිටු අංක 385 සිට 394
+	const data36 = (typeof data_extra_395_404 !== 'undefined') ? data_extra_395_404    : []; // පිටු අංක 395 සිට 404
+	const data37 = (typeof data_extra_405_417 !== 'undefined') ? data_extra_405_417    : []; // පිටු අංක 405 සිට 417
+	const data38 = (typeof data_extra_418_427 !== 'undefined') ? data_extra_418_427    : []; // පිටු අංක 418 සිට 427
+	const data39 = (typeof data_extra_428_438 !== 'undefined') ? data_extra_428_438    : []; // පිටු අංක 428 සිට 438
+        const data40 = (typeof data_extra_439_449 !== 'undefined') ? data_extra_439_449 :[]; // පිටු අංක 439 සිට 449
+	const data41 = (typeof data_extra_450_458 !== 'undefined') ? data_extra_450_458 :[]; // පිටු අංක 450 සිට 458
+	const data42 = (typeof data_extra_459_470 !== 'undefined') ? data_extra_459_470 :[]; // පිටු අංක 459 සිට 470
+	const data43 = (typeof data_extra_471_481 !== 'undefined') ? data_extra_471_481 :[]; // පිටු අංක 471 සිට 481
+        const data44 = (typeof data_extra_482_492 !== 'undefined') ? data_extra_482_492 :[]; // පිටු අංක 482 සිට 492
+        const data45 = (typeof data_extra_493_506 !== 'undefined') ? data_extra_493_506 :[]; // පිටු අංක 493 සිට 506
+        const data46 = (typeof data_extra_507_513 !== 'undefined') ? data_extra_507_513 :[]; // පිටු අංක 507 සිට 513
+        const data47 = (typeof data_extra_514_524 !== 'undefined') ? data_extra_514_524 :[]; // පිටු අංක 514 සිට 524
+
+masterData = [...data1, ...data2, ...data3, ...data4, ...data5, ...data6, ...data7, ...data8, ...data9, ...data10, ...data11, ...data12, ...data13, ...data14, ...data15, ...data16, ...data17, ...data18, ...data19, ...data20, ...data21, ...data22, ...data23, ...data24, ...data25, ...data26, ...data27, ...data28, ...data29, ...data30, ...data31, ...data32, ...data33, ...data34, ...data35, ...data36, ...data37, ...data38, ...data39, ...data40, ...data41, ...data42, ...data43, ...data44, ...data45, ...data46, ...data47];
+        
+        if (masterData.length > 0) {
+            document.getElementById('wordCount').innerText = masterData.length.toLocaleString('si-LK');
+            createAlphabetIndex();
+        }
+    });
+
+
+
+
+    const sinhalaLetters = ["අ", "ආ", "ඇ", "ඈ", "ඉ", "ඊ", "උ", "ඌ", "එ", "ඒ", "ඔ", "ඕ", "ක", "ග", "ච", "ජ", "ට", "ඩ", "ණ", "ත", "ද", "න", "ප", "බ", "ම", "ය", "ර", "ල", "ව", "ස", "හ"];
+    function createAlphabetIndex() {
+        const container = document.getElementById('alphabetIndex');
+        container.innerHTML = "";
+        sinhalaLetters.forEach(letter => {
+            let btn = document.createElement('button');
+            btn.className = 'letter-btn'; btn.innerText = letter;
+            btn.onclick = () => { document.getElementById('searchInput').value = letter; initSearch(true); };
+            container.appendChild(btn);
+        });
+    }
+
+    function initSearch(isIndexSearch = false) {
+        let input = document.getElementById('searchInput').value.trim().toLowerCase();
+        let resultDiv = document.getElementById('results');
+        if (input.length < 1) { resultDiv.innerHTML = ""; return; }
+
+        let filtered = masterData.filter(item => {
+            const categoryMatch = (currentCategory === 'all' || item.category === currentCategory);
+            let wordMatch = item.word.toLowerCase().startsWith(input);
+            return categoryMatch && wordMatch;
+        });
+
+        resultDiv.innerHTML = "";
+        filtered.slice(0, 50).forEach(item => {
+            resultDiv.innerHTML += `<div class="word-card"><span class="word-title">${item.word}</span><div class="meaning">${item.meaning}</div></div>`;
+        });
+    }
+
+    function filterByCategory(cat, btn) {
+        document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active'); currentCategory = cat;
+        initSearch();
+    }
+
+    function exitApp() { if (confirm("ඔබට මෙම ශබ්දකෝෂයෙන් පිටවීමට අවශ්‍යද?")) { window.close(); window.location.href = "about:blank"; } }
+    function toggleDarkMode() { document.body.classList.toggle('dark-mode'); }
+    function changeFontSize(delta) { 
+        const root = document.querySelector(':root');
+        const cur = parseFloat(getComputedStyle(root).getPropertyValue('--content-font-size'));
+        root.style.setProperty('--content-font-size', (cur + delta) + 'px');
+    }
+
+    const infoData = {
+                 
+history: {
+            title: "දේශීය වෙදකමේ ඉතිහාසය",
+            body: `
+                <div style="font-family: 'Noto Sans Sinhala', sans-serif; line-height: 1.8; color: #333; text-align: justify;">
+                    
+                    <h3 style="color: var(--primary-green); text-align: center; border-bottom: 1px solid #ccc; padding-bottom: 5px;">ප්‍රස්තාවනා</h3>
+                    <h4 style="color: var(--accent-green); text-align: center; margin-bottom: 20px; font-size: 18px;">දේශීය වෙදකම</h4>
+                    
+                    <p>මින් සු විසි ශත වර්‍ෂයකින් ඔබ්බෙහි දුර්‍මරික ක්‍රියා නිසා රටින් පිටුවහල් කළ විජයාදි දුර්‍මරික පිරිස මෙහි පැමිණ මෙම දිවයින තමන් සතු කරන්ට මත්තෙන් මෙහි විසූ දක්‍ෂ යක්‍ෂයෝ, ලෝකයා මවිත කරවන යක්‍ෂ වැඩ කළෝ ය.</p>
+                    
+                    <p>වාල්මිකී ස්වකීය මානෙ මුඛින් ලැබියෙන් දැඩි වූ දුෂ්ට රචනාවක් කොට “ලංකා වාසීහු මිනිසුන් කන යක්‍ෂයෝ” ය යි ලෝකයා හමුවේ අසත්‍ය වාර්‍තා වක් පිහිට වූ නමුත්, විමසුම් සහිත ව ඒ රචනය කියවන විට එකල ලොව විසූ අතිශුඬ මනුෂ්‍ය යෝ නම් <b>“ලක්දිව විසූ යක්‍ෂ යෝ ම ය”</b> යි සිතිය හැක.</p>
+                    
+                    <p>ඔව්හු නුබ ගැබ වලාවන්හි ගැටී යන සේ උස් ව ගිය මහා මන්දිර සහිත සකලාංග සම්පූර්‍ණ මහා නගර නිර්‍මාණය කළෝ ය. ඖෂධීය රස පෙරන යන්ත්‍රයේ පටන් ආකාශ යාත්‍රාව අවසන් කොට ඇති යන්ත්‍ර-සූත්‍ර සෑදු වෝ ය. ඒ ආකාශ යාත්‍රා වලින් ලෝක වාර්‍තා පිහිටෙව්වෝ ය. නාඩි ශාස්ත්‍රය රසායන විද්‍යාව ඇතුළු වෙදකමෙහි ත් දක්‍ෂ ව විසූ හ. යන්ත්‍ර-මන්ත්‍ර සහිත ඉන්ද්‍රජාල ශාස්ත්‍රයෙහි මෙන් ම සංගීතයෙහි ද කෙළ පැමිණියෝ ය. නොයෙක් විෂය යන් පිළිබඳ අගනා ග්‍රන්ථ සම්පාදනය කළ හ. ඉන්දියාවේ දෙවියන් සමග සටන් කොට ඔවුන් තමා ඉදිරියේ දන ගැස්ස වූ හ.</p>
+                    
+                    <p>ලක්දිව වාසීන්ගේ මේ අප්‍රතිහත දියුණුව දඹදිව විසූ දෙවියන්ට පවා කරදර වුණා පමණක් නොව ඔවුන්ගේ ඊර්‍ෂ්‍යාව ද දියුණු කළේය. ලංකාවේ ජාතික හා ආගමික ශිෂ්ටාචාරය උඩ ගොඩ නැගුණු ශ්‍රී විභූතිය මකා දැමුවේ මින් අවුරුදු දහසකට පෙර අසුර යුගයෙහි මෙහි පැමිණි වංක්‍රවංශික කණ්ඩායම් ප්‍රමුඛ කොට ඇති ඉන්දියානුවෝ ම ය.</p>
+                    
+                    <p>ගත වර්‍ෂ විසි පහකට පමණ පෙර දේව-යක්‍ෂ(රාක්‍ෂස)-නාග යන ගෝත්‍රිකයන් අතර බෙදී ගිය රාජ්‍ය පාලනය පිළිබඳ ඇති වූ අභ්‍යන්තර පක්‍ෂ භේද නමැති අර්‍බුදයෙන් පෙළී පෙළී ක්‍රමයෙන් පරිහානි පක්‍ෂයක ගමන් කරමින් සිටි සමයක මෙහි පැමිණි විජයාදි දුර්‍මරික පිරිසට මෙම දිවයින තමන් සතු කර ගැනීම වඩා අපහසු කරුණක් නොවිය. විදේශිකයන් යටතට පත් වන රටවල ස්වදේශිකයන් හා ඔවුන්ට අයත් ශිල්පශාස්ත්‍ර ත් පිරිහීම නො වැළැක්විය හැක්කකි. එකල විජයාදීන් අතින් සිදු වූයේ ද ඒ පාරම්පරික ජාතික විනාශය ම ය.</p>
+
+                    <h4 style="color: var(--accent-green); margin-top: 25px; font-size: 18px;"><b>දේශීය වෙදකමේ ස්වර්‍ණමය යුගය</b></h4>
+                    
+                    <p>රාවණ සමය ලංකා දේශීය වෙදකමේ ස්වර්‍ණමය යුගය ලෙස සැලකිය හැකි යි. ජගත් පූජ්‍ය වෛද්‍ය පරම්පරාවක ආදි කර්‍තෘවරයෙකු වූ ද, පුලස්තිපුර අග්‍ර රාජධානිය කොට රාජ්‍යානුශාසනය කළා වූ ද, මහර්‍ෂි පුලස්තිහුගේ මුණුබුරා වූ <b>වෛද්‍ය ශිරෝමණී ශ්‍රී ලංකාධිපති රාවණ අධිරාජයා</b> ලොව විසූ ශ්‍රේෂ්ඨ වෛද්‍යවරයන් අතුරෙන් ප්‍රමුඛස්ථානයෙහි ලා ගැනේ. මේ තුමා ජීවත් වූයේ වික්‍රම සංවත්සරයෙන් 1207 වසකට පෙර ය යි ඇතැම් භාරතීය ඓතිහාසිකයන්ගේ මතය යි. බුද්ධ වර්‍ෂයෙන් යට 1844 වසකට පෙර ය යි රාජාවලියේ කියා තිබේ. මේ කරුණු අනුව බලන කල නිගමනයකට බැසිය හැක්කේ දඹදිව දස දේශයක් යටත් කළ නිසා ඒ දස දේශ කිරුළ අනුව <b>“දශීස්”</b> ය යි විරුද නාමයකින් හැඳින්වෙන මේ තුමා මින් අවුරුදු හාර දහසකට පෙර ජීවත්වූ බව යි. එකල ලක් දිව යන්ත්‍ර-සූත්‍ර අතින් මෙකල යුරෝපය මෙන් ම කර්‍මාන්ත යුගයක පැවති බව <b>රාවණ—රාම</b> යුද්ධයෙහි දී පාවිච්චි කරණ ලද <b>නාගශර—අග්නිශර</b> ආදිය ගැන කියවීමෙන් පමණක් නොව කාර්‍මික රටකට අයත් රාවණ රජුගේ ඇඳුමෙන් ම හැඟේ. සිය සොහොයුරාට ත්, මොහුට ත්, අහස් යාන තිබුණු බව ද සඳහන් වේ.</p>
+                    
+                    <p>රාවණ තෙමේ දක්‍ෂ රසායන වෛද්‍යවරයෙකි. ඉගෙන ගත් ගුරුවරයෙකු ගැන කියා නැත. නමුත් අනුන් අතින් නො මැරෙන වරයක් ලබා ගැනීම සඳහා බ්‍රහ්මයා සතුටු කරණු වස් <b>ගෝකර්‍ණ</b> ග්‍රාමයට (1) වී තපස් රැකි බව කිය වේ. බ්‍රහ්ම තෙමේ ආයුර්වේදයේ ප්‍රනෙතෘවරයා යි. රාවණ රජු ඔහුගෙන් බලාපොරොත්තු වූ වරය ගැන සිතන විට ඔහු බ්‍රහ්මයාගේ වෙදකම ඉගෙනගත්තා පමණක් නොව ක්‍ෂණික තුවාල වලින් දිවි ගලවා ගත හැකි රහස් ඖෂධ යෝග ගැන ත් ගෝකර්‍ණාග්‍රාමයෙහි දී දැනගෙන තිබෙන බැව් සිතිය හැක.</p>
+                    
+                    <p>රාවණ—රාම යුද්ධයෙහි දී බරපතල තුවාල ලැබූ (මියගිය) අයට පණ දුන් බවකු ත් කියවෙන නිසා බ්‍රහ්මයා සතුටු කොට ඉගෙනගත් ඒ විශේෂ වෙදකමෙන් ද අදහස් පරිදි ප්‍රයෝජන ගත් බැව් සිතන්ට ඉඩ තිබේ. එසේ ම මින් පෙර හෝ පසුව නො පැවති ලෙස යන්ත්‍ර—මන්ත්‍ර ආදි ගුප්ත විද්‍යාව ත් දියුණු ව පැවති බැව් “අහසේ වලාකුල් තුළ සැඟවී සිට පහර දීම” “අදෘශ්‍යමාන ව සිට පහර දීම” ආදී ඒ පිළිබඳ කථා වලින් හැඟේ.</p>
+
+                    <h4 style="color: var(--accent-green); margin-top: 25px; font-size: 18px;"><b>අර්‍ක ප්‍රකාශය</b></h4>
+                    
+                    <p>මෙය රාවණ රජ තුමා විසින් නිපදවන ලද ග්‍රන්ථ (1. <b>කුමාර තන්ත්‍ර</b>—2. <b>අර්‍කප්‍රකාශ</b>—3. <b>නාඩිප්‍රකාශ</b>—4. <b>උඩිස්තන්ත්‍ර</b>) අතුරෙන් එකකි. පාණිනි සංස්කෘත ව්‍යාකරණ ශාස්ත්‍රය හකුළුවා පාණිනි ව්‍යාකරණය කළාක් මෙන් ද, ගෞතම සෘෂි තර්‍ක ශාස්ත්‍රය හකුළුවා ගෞතම සූත්‍ර කළාක් මෙන් ද, චරක තෙමේ අග්නිවේශ තන්ත්‍රය හකුළුවා චරක සංහිතාව කළාක් මෙන් ද, රාවණ මනුෂ්‍යෙද්‍ර තෙම සකල ආයුර්වේදීය ග්‍රන්ථසාරය උදුරා මේ අර්‍කප්‍රකාශය කළේ ය. නොයෙක් රෝගාබාධ සඳහා නියමිත අර්‍ක වර්ග ඇතුළත් ශතක දසයකින් හෙවත් ශ්ලෝක දහසකින් පරිමිත මේ ග්‍රන්ථය ප්‍රකාශ කර තිබෙන්නේ සිය අග මෙහෙසිය වූ මන්දෝදරී සමග සංවාද මුඛයෙනි. යන්ත්‍රානුසාරයෙන් වාෂ්පකර ඖෂධ සාරය පෙරා ගන්නා (අර්‍ක) ක්‍රමය මේ ග්‍රන්ථයෙහි සඳහන් ව තිබෙන නිසා මෙයින් හැඟෙන්නේ එ කල යන්ත්‍ර—සූත්‍ර පමණක් නොව වෙදකම ත් මේ කල අපර දිග ක්‍රමයෙහි එනලෙස පැවති බව යි.</p>
+                    
+                    <blockquote style="background: rgba(27, 77, 62, 0.05); padding: 15px; border-left: 5px solid var(--primary-green); margin: 15px 0; font-size: 16px; border-radius: 5px;">
+                        1. ගව(ගෙරි) කණක හැඩහුරුකම ඇති වරායක් අසබඩ පිහිටි අසපුවකි. ත්‍රිකුණාමලයට පෙර <b>ගෝකර්‍ණ</b> යන නම ව්‍යවහාර වූ බව ඒ පෙදෙසෙහි තිබී සොයා ගත් ශිලා ලිපියක සඳහන් ව ඇත. ගෝකර්‍ණයක හැඩහුරුකම ඇති වරාය තිරිකුණාමලේ වරාය බව ත්, දැනට වැඩි කොටසක් මුහුදට දිය වී ගොස් තිබෙන ගල් පර අතර වූ පැරණි දේවාලය රාවණ රජු ඉගෙන ගත් පැරණි ගෝකර්‍ණග්‍රාමය බව ත් සිතීමට ඉඩ තිබේ.
+                    </blockquote>
+
+                    <p>ශ්වාස රෝගයට ධත්තූරාකිය, කෘමි රෝගයට විඩංගාකිය දැ යි මේ සේ රසායන විද්‍යානුකූල ප්‍රත්‍යක්‍ෂඵල ලැබෙන ඖෂධයන් ගෙන් සම්පූර්‍ණ ආදිම ලාංකික වෛද්‍ය ග්‍රන්ථය වූ අර්‍කප්‍රකාශය 1945 දී විශේෂ සංස්කරණයකින් යුක්ත ව මුද්‍රණයට පැමිණවීමි. මෙම කරුණු නිසා අෂ්ටාංග සම්පෙත දේශීය වෙදකමේ ස්වර්‍ණමය යුගය රාවණ සමය ලෙස පිළිගත හැක.</p>
+
+                    <h4 style="color: var(--accent-green); margin-top: 25px; font-size: 18px;"><b>දඹදිව හා අපර දිග වෙදකම</b></h4>
+                    
+                    <p>උත්තර-දක්‍ෂිණ භාරතීය (ආයුර්වේද-සිද්ධ) වෙදකම ද මේ පමණ හෝ මීට ත් වඩා පැරණි බැව් නොයෙක් සාධක අනුව සිතිය හැකි. පසුකලක දී මේ දෙ වෙදකම ලාංකික වෙදකම හා හුවමාරු කර ගෙන තිබෙන බැව් දෙ රටෙහි ම තිබෙන පොත් පත් සසඳා බැලීමෙන් පෙනේ පෙර දිග ධර්‍ම දූතයන්ගේ, දේශ සංචාරකයන්ගේ හා වෙළඳුන්ගේ මාර්‍ගයෙන් අරාබිය පාරේ අපර දිගට ගියේ ද මේ වෙදකම ම යි.</p>
+
+                    <h4 style="color: var(--accent-green); margin-top: 25px; font-size: 18px;"><b>ආයුර්වේදයේ සම්භවය</b></h4>
+                    
+                    <p>ලෞකික කටයුතු වලින් වෙන් ම හිමාලපර්‍වත ප්‍රාන්තයෙහි විවේක ජීවිත ගත කරමින් විසූ සෘෂීන් විසින් මනුෂ්‍යත්‍වය ඉක්මවා ගිය ස්වකීය බුද්ධීන්ගෙන් හිමාලය පර්‍වත මුදුනෙහි පටන් සාගර පතුල දක්වා ඇති හැම ද්‍රව්‍යයක ම විද්‍යමාන රස—ගුණ—ඕජා පරීක්‍ෂා කර බලා තමන් වෙත පැමිණි කීකරු ශිෂ්‍යයන්ට උගන්වන ලද සත්ත්‍ව ජීවිත ආරක්‍ෂා කිරීමේ විද්‍යාව ආයුර්වේදය යි.</p>
+                    
+                    <p>අථර්‍වන වේදයෙහි උපාංගයක් වූ මේ ම ආයුර්වේදය ආදියෙහි අද්‍යාය දහසක ඇතුළත් කරණ ලද ශ්ලෝක ලක්‍ෂයකින් පරිපූර්‍ණ විය. අනාගතයෙහි උපදින මිනිසුන්ගේ අල්පායුෂ හා අල්ප බුද්ධිය ගැන සලකා ඒ රුසීහු ශල්‍ය, ශාලාක්‍ය, කාය චිකිත්සා, භූත විද්‍යා කෞමාරභෘත්‍ය, අගද තන්ත්‍ර, රසායන තන්ත්‍ර, වාජීකරණ තන්ත්‍ර යන අෂ්ටාංගයකින් යුක්ත වන සේ සුදුසු ප්‍රමාණයකට ඒ වෙදකම සකස් කළ හ. ඔවුන්ගේ බුද්ධි ප්‍රභාවය හා එ කල පැවති ග්‍රන්ථ සංඛ්‍යාව ත් දෙසබලන විට මෙය අතිශයෝක්තියක් නොව සම්පූර්‍ණ සත්‍යයක් ම බැව් අභිවාදයෙන් පිළිගැනීමට ඉඩ තිබේ.</p>
+
+                    <h4 style="color: var(--accent-green); margin-top: 25px; font-size: 18px;"><b>ව්‍යාප්තිය</b></h4>
+                    
+                    <p>පෙර දඹදිව දියුණුව පැවති <b>නාලන්දා—තක්‍ෂිලා—වික්‍රමශිලා</b> විශ්ව විද්‍යාලයන්හි උපාංගයක් වශයෙන් ආයුර්වේදය ද ඉගැන්වූ හ. වෛද්‍ය ශාස්ත්‍රය විෂයෙහි භාරතීය විශ්ව විද්‍යාලවල පැවති දියුණු තත්ත්‍වය දැනගත් යෝනක (යවන-ග්‍රීක) යෝ ද ඒ කී විද්‍යාල වලට බැඳී ආයුර්වේදය හැදෑරූ හ. “යවනයෝ ජාතියෙන් මිලෙච්ඡ වුව ද ඉගෙනීමෙහි අති දක්‍ෂයෝ” ය යි කුලවාදයෙන් මත් වූ ඇතැම් බමුණු ඇදුරෝ ග්‍රීක (යවන) යන්ට පරිභව කළ ද, ඒ සටහන් වලින් ඔවුන් දඹදිවට පැමිණ ඉගෙන ගත් බව ත්, ඉගෙනීමෙහි අතිදක්‍ෂයන් බව ත්, ඉගෙන සියරට බලා පැමිණීමෙන් පසු ඉගෙනගත් ශාස්ත්‍රය වඩා ත් ක්‍රමානුකූලලෙස සකස්කර අනික් අපර දිග රටවල ද බෙදා හැරීමෙන් දැන් පවත්නා අපරදිග වෙදකම ඇති වූ බව ත් පිළිගත හැකි ව තිබේ.</p>
+
+                    <h4 style="color: var(--accent-green); margin-top: 25px; font-size: 18px;"><b>වෙනත් ආයතන හා පුදුම උපාධි</b></h4>
+                    
+                    <p>මෙ ම විද්‍යාල හැර ශිෂ්‍යයන් පුහුණු කරණ දිසාපාමොක් ආචාරිවරුන්ගේ පාලනයෙහි පැවති වෙනත් විද්‍යායතන ද පැරණි දඹදිව තිබුන බව පෙනේ. <b>ජීවක කෝමාර භච්ච</b> ද එවැනි තැනක උගත් තෙකී.හෙතෙමේ යමක් වරක් ඇසු පමණින් අමතක නොවන තරමේ බුද්ධියක් ඇති ඉගෙනීමෙහි අති දක්‍ෂයෙකි මේ සේ සත් අවුරුද්දක් ඉගෙනීම ලැබූ ඔහු දිනක් සිය ගුරුවරයා වෙත පැමිණ ‘දැන් සත් වසක් ඉගැන් වූ හැම දෙයක් ම ප්‍රගුණ කළ නමුදු මෙ ම ශිල්පයෙහි නිමාවක් දක්නට නැත. එම නිසා මෙය කෙළවර වන්නේ කවදාද” යි ඇසී ය. ඇදුරු තෙමේද “එ සේ නම් සිසු දරුව ! උදැල්ලක් අතට ගෙණ යොදුනක් දිග—පළල ඇති තක්‍ෂිලා වනය හාත්පස ඇවිද බෙහෙතට නොගන්නා යමක් සොයාගෙණ එව“යි නියෝග කළේ ය.</p>
+                    
+                    <p>අයම්-විතරින් යොදුනක් තැන් වනය පරීක්‍ෂා කළ ඔහුට බෙහෙතකට නො ගන්නා කිසිවක් සොයා ගත හැකි නො වී ය. ඒ බව ගුරුවරයා වෙත පැමිණ සැළ කළ විට ඔහු කීයේ “දරුව! තොපට දිවි පෙවෙත රැක ගැනීමට කටයුතු කර ගත හැකි තරමේ වෙදකම ගැන සුළු දැනීමක් තිබෙන නිසා ඉගෙනීම නවත්වා ගම-රට බලා ගොස් වෛද්‍යවෘත්තියෙහි යෙදීමට සුදුසුකම් ඇත” යනු යි.</p>
+                    
+                    <p>එ කල පැවති වෛද්‍ය විද්‍යාවේ දියුණුව මැන ගැනීමට මෙය කදිම නිදසුනකි. ජීවක පෙනී සිටි පරීක්‍ෂණය ත් එයින් ලැබූ උපාධිය ත් සුළු එකක් බැව් දිසාපාමොක් ආචාරීන්ගේ වචන වලින් පෙනේ. “වැඩිය නොවේ යි, අද මේ පරීක්‍ෂණය සඳහා පෙර-අපර දෙදිග වෛද්‍ය විශෙෂඥයන් හෝ උද්භිද විද්‍යාඥයන් ඉදිරිපත් කළොත් එයින් කීදෙනෙකුට සමත් විය හැකි ද” යි සිතා බැලීම ඒ විශෙෂඥයන්ට ම භාර දීම වඩා සුදුසු ය යි සිතමි. දිග—පළල යොදුනක් ඇති කැලයක තිබෙන වෘක්‍ෂ—ලතාදියෙහි ගුණා‘ගුණ තබා නම් ටික ව ත් කිව හැකි වුවහොත් පුදුමයකි. මෙය විනය පිටක—මහාවග්ග පාලියෙහි (ශ්‍රී මුඛ දේශනාවෙහි) ඇතුලත් කථා ප්‍රවෘත්තියකි.</p>
+                    
+                    <p>මේ සේ ඉගෙනීම ලබා සමාප්තයට පැමිණි ජීවකයන් විසින් කරණ ලද වෙද හෙදකම් කීපයක් ගැන ද එහි ම සඳහන් කර තිබේ.</p>
+                    
+                    <ol style="margin-left: 20px; margin-bottom: 15px;">
+                        <li style="margin-bottom: 8px;">සාකේත නගර වැසි සිටුවරියකගේ සත් අවුරුදු හිස රුදාවක් එක නශ්‍යයකින් සුව කිරීම.</li>
+                        <li style="margin-bottom: 8px;">බිම්සර රජුගේ භගන්දලාබාධය එක ම ලේප(පාලස්තර)යකින් සුවකිරීම.</li>
+                        <li style="margin-bottom: 8px;">රජගහ නුවර සිටුහුගේ මොළය කමින් සිටි පණුවන් දෙදෙනෙක් හිසෙහි ශල්‍යකර්‍මයකින් අස් කොට සුවපත් කිරීම.</li>
+                        <li style="margin-bottom: 8px;">බරණැස් සිටුහුගේ බඩෙහි වූ ගෙඩියක් බඩ පලා (ශල්‍යකර්‍මයකින්)අස් කොට සුවපත් කිරීම.</li>
+                        <li style="margin-bottom: 8px;">චණ්ඩප්‍රජ්ජොත රජුගේ පාණ්ඩුව ගිතෙල් මිශ්‍ර එක ම රසායනයකින් සුවපත් කිරීම හා—</li>
+                        <li>එක් වරක් චුම්බනය (ඉඹීම) කිරීමෙන් දස වරක් විරේක වන ඖෂධ බහා ලූ නෙළුම් මල් තුනක් බුදු රදුන්ට පිදීමෙන් ය.</li>
+                    </ol>
+                    
+                    <p>මෙයින් හිසෙහි කළ ශල්‍යකර්‍මය ඉතා බරපතල එකකි. තෙල් අප්‍රිය කරණ චණ්ඩප්‍රජ්ජොත රජුට ගිතෙල් පෙවීම ද වෙද ගැට හෙළි වන රස මුසු කථා ප්‍රවෘත්තියකි. එ කල මේ ශල්‍යකර්‍ම සඳහා සිහි නැතිකිරීම පිණිස මොහිනී නමැති චූර්‍ණයක් පාවිච්චිකරණ ලද බව පෙනේ.</p>
+                    
+                    <p>ඈත අතීතයෙහි ශල්‍යකර්‍ම අතින් ද පෙර දිග් වාසීන් අපර දිග ඉක්මවා තිබෙන බැව් මේ විනය පිටකාගත සත්‍ය කථා ප්‍රවෘත්ති වලින් සිතා ගත හැක අපර දිග් වාසීන්ට මේ ක්‍රම සොයා ගත හැකි වූයේ ඉතා මෑතකදී හෙයිනි.</p>
+
+                    <h4 style="color: var(--accent-green); margin-top: 25px; font-size: 18px;"><b>ව්‍යාජ වෛද්‍යවරයෝ</b></h4>
+                    
+                    <p>ජීවකයන් වැනි ශ්‍රේෂ්ඨ වෛද්‍යවරයන් විසූ සමයෙහි ද රට මුලා කරණ, අමින බොරු වෛද්‍යල්කාර වෙදුන් දඹදිව විසූ බව විනය පිටකයේ එන එක් කථා ප්‍රවෘත්තියකින් පෙනේ. ජීවක වෛද්‍යවරයා එක ම පාලස්තරයෙන් සුව කළ රෝගයක් වූ භගන්දර රෝගය වැළඳුන භික්‍ෂූ නමක් වේළුවන විහාරයෙහි විසී ය.</p>
+                    
+                    <p>භාග්‍යවතුන් වහන්සේ භික්‍ෂූන්ගේ නේවාසිකාගාර (සෙනසුන්) පරීක්‍ෂා කරමින් වඩින වේලෙහි, ඒ භික්‍ෂූ නමට ශල්‍යකර්‍මයක් කරමින් සිටි ආකාසගොත්ත නමැති වෙදෙක් උන් වහන්සේ වඩිනු දුරදීම දැක “ආගච්ඡතු භවං ගොතමෝ, ඉමස්ස භික්ඛුනෝ වච්චමග්ගං පස්සතු සෙය්‍යථාපි ගොධාමුඛං” (පින්වත් ගෞතමයන් වහන්ස ! මෙහි වඩිනුසේක්වා, මේ භික්‍ෂුවගේ තලගොයි කටක් වැනි කහල මාර්‍ගය බලන සේක්වා)යි කවටකම් කළේ ය. මේ ගැණ සංවේගයට පත් උන්වහන්සේ ට සම්බාධස්ථානයෙහි ශල්‍යකර්‍ම පිළිබඳ ශික්‍ෂාපද පවා පණවන්ට සිදු වී ය.</p>
+
+                    <h4 style="color: var(--accent-green); margin-top: 25px; font-size: 18px;"><b>අතීත ලංකාවේ පැවති වෛද්‍ය සේවය</b></h4>
+                    
+                    <p>වෛද්‍ය සේවය පිළිබඳ ස්වර්‍ණමය යුගය වූ රාවණ සමය ගැණ කලින් ලියා ඇත. එය ඉතිහාසයට පෙර ලියූ භාරතීය ලේඛන වල සඳහන් ප්‍රවෘත්ති වලින් ලබා ගත් සම්පිණ්ඩනයකි. මින් පසු මේ ගැණ තොරතුරු දැක්විය හැක්කේ විජයාදී ඉන්දියානුන්ගේ ලංකා ආක්‍රමණයෙන් පසු මේ ම දිවයිනෙහි ලියවී තිබෙන වංශකථා—අට්ඨකථා—ශිලා ලිපි හා වෙද පොත් අනුව ය.</p>
+                    
+                    <p>එයිනු ත් මහාවංශයෙහි සඳහන් වන පළමුවැනි ප්‍රකාශය ලක්දිව ශේෂ ව විසූ රාක්‍ෂසයන්ගේ සහාය ද ඇති ව නෑදෑයින් සහිත ඉන්දියානු රජ වරුන් තසා, අනුරාධපුරය සකලාංග සම්පූර්‍ණ මහා නගරයක් ලෙස ගොඩනංවා, එහි ම වෙසෙමින් සම සැත්තෑ වසක් ලංකා රාජ්‍යානුශාසනය කළ පණ්ඩුකාභය රජු සමයෙහි ය.</p>
+
+                    <h4 style="color: var(--accent-green); margin-top: 25px; font-size: 18px;"><b>අනුරාධපුර සමය</b></h4>
+                    
+                    <ol style="margin-left: 20px; margin-bottom: 15px;">
+                        <li style="margin-bottom: 10px;">පණ්ඩුකාභය (ක්‍රිස්තු වර්‍ෂයෙන් යට 377–307) රජ තෙමේ අනුරාධ පුරනගරයෙහි සූතිකාගාරය (තිඹිරිගෙය) ක් හා ආරෝග්‍ය ශාලාව (ගිලන්හල) ක් පිහිට වූයේ ය. (මහාවංශ - 10 පරි: 102 ගාථා)</li>
+                        <li style="margin-bottom: 10px;">දුටුගැමුණු (ක්‍රි:පූ: 101—77) සමයෙහි ලක්දිව පුරා පැවති ආරෝග්‍යශාලා රජයෙන් පාලනය වූ අතර, ගර්භිණී මව් වරුන්ට අවශ්‍ය ආහාර—පාන—ඖෂධ ආදිය ත් චිත්තබූවන්ට පාරිතෝෂික දීමනා ත් රජුගේ පෞද්ගලික භාණ්ඩාගාරයෙන් සැපයුහ.(මහාවංශ-පරි: 32 ගාථා - 38)</li>
+                        <li style="margin-bottom: 10px;">බුද්ධදාස (ක්‍රි: ව: 398—426) රජ දක්‍ෂ ශල්‍ය වෛද්‍ය වරයෙකි. එකල රෝගීන්ගේ ප්‍රයෝජනය සඳහා ගමක් පාසා රෝ හලක් හා සත්ත්‍වගාර ශාලාවක් ද, අංග විකල වූවන් හා අන්ධයන් වෙනුවෙන් වෙන් වෙන් වූ රෝ හල් ද කරවූහ. මෙකල යුද්ධ භටයන් වෙනුවෙන් යුද්ධා රෝග්‍ය ශාලා ද, තිරිසන් සතුන් වෙනුවෙන් පශු වෛද්‍ය ශාලා හා පශු වෛද්‍ය වරයන් ද ඇතිවීම වැදගත් සිද්ධියකි.</li>
+                    </ol>
+                    
+                    <p>මේ ආරෝග්‍ය ශාලාවල නඩත්තුව රජයෙන් සිදු වන අතර වෛද්‍ය වරයන්ගේ නඩත්තුව සඳහා ඒ ඒ ගම් වල කුඹුරු වලින් ලැබෙන අස්වැන්නෙන් දහයෙන් කොටසක් ගන්නා ලද බව ද පෙනේ.</p>
+<p>4. දෙවෙනි උපතිස්ස (ක්‍රි: ව: 426-468) රජු කල මහ ජනයාගේ පොදු ප්‍රයෝජනය සඳහා මහාරෝග්‍ය ශාලා ත්, අන්ධයන්, කොරුන්, හා ගර්භිනී මව් වරුන් සඳහා වෙන් වෙන් වූ ආරෝග්‍ය ශාලා ත්, කරවන ලදහ. (මහාවංශ - පරි: 37 - ගාථා 182)</p>
+
+<p>5. දෙවෙනි දප්පුල (ක්‍රි: ව: 792-797) රජු පොළොන්නරුවේ හා පදවිය ප්‍රදේශයේ ආරෝග්‍ය ශාලා නංවා ඒවායේ පැවැත්ම සඳහා ගම්වර පරිත්‍යාග කළේ ය. මෙතෙමේ අන්ධයන්ට හා අංගවිකල වූවන්ට ද නොයෙක් තන්හි ආරෝග්‍ය ශාලා පිහිටවූයේ ය. (මහා-පරි: 49 ගාථා: 18-19)</p>
+
+<p>6. සිව් වැනි කාශ්‍යප (ක්‍රි: 896-913) රජු වසංගත රෝගීන් සඳහා අනුරාධ පුරයේ හා පොළොන්නරුවේ ගිලන් හල් ඉදිකර දිවයිනේ නොයෙක් තන්හි පූර්‍ණාරෝග්‍ය ශාලා ද පිහිටවූයේ ය. (මහා-පරි: 52)</p>
+
+<p>7. පස් වැනි කාශ්‍යප (ක්‍රි: ව: 913-923) රජු අනුරපුර රෝහලක් ගොඩනැංවී ය (මහා-පරි: 52 ගාථා 57)</p>
+
+<p>8. සිවුවැනි මිහිඳු (ක්‍රි: ව: 956-972) රජු ලක්දිව රජය මගින් පාලනය වන ගිලන් හලක් පාසා බෙහෙත් හා යහන් ද සිය වියදමින් බෙදා හැරියේය. ඔහුගේ පුත්‍ර තෙමේ අනුරාධපුර නගරයෙහි උපාසක - උපාසිකා දෙපිරිසගේ ප්‍රයෝජනය සඳහා ආරෝග්‍ය ශාලාවක් ඉදි කළේ ය.</p>
+
+<h4 style="color: var(--accent-green); margin-top: 25px; font-size: 18px; text-align: center;"><b>පොළොන්නරු යුගය</b></h4>
+
+<p>ත්‍රිසිංහලය එක් සේසත් කොට පොළොන්නරුව අග්‍ර රාජධානිය වශයෙන් ගෙන විසූ මහා පරාක්‍රමබාහු (ක්‍රි: ව: 1153-1186) රජු කල ලංකා වෛද්‍ය සේවය ක්‍රමානුකූල ලෙස ඉතා උසස් තත්ත්වයක දියුණුව පැවති බැව් මහා වංශයෙහි සඳහන් වෙයි.</p>
+
+<p>ඔහුගේ ඇමති මඬුල්ලෙහි මහ වෙදනා-සුළු වෙදනා නම් වලින් <b>වෛද්‍ය ඇමති-වෛද්‍ය උප ඇමති</b> පදවි දෙකක් ද තිබුන බැව් මහා වංශයෙහි හා ශිලා ලිපියක ත් ලියවී තිබේ.</p>
+
+<p>එකල රෝහල් වල සිටි එක් රෝගියෙකුට සාත්තුකාර සේවකයෙක් සහ සේවිකාවක් බැගින් පත් කර තිබුන බව ත්, <b>රෝහල් මහා පාලකයකින් යුක්ත ව පැවති බව ත්, යුද්ධය වැනි හදිසි අනතුරු</b> වලින් තුවාල ලබන අය සඳහා සේවය කිරීමට පුහුණුව ලැබූ ස්ත්‍රී-පුරුෂ දෙ පක්‍ෂයේ ම ප්‍රථමාධාර කණ්ඩායම් සිටි බව ත් මහාවංශයෙහි විස්තර කර ඇත. මේ රජ තෙමේ ඒ ඒ චිකිත්සාවන් පිළිබඳ දක්‍ෂ වෛද්‍ය වරයන් ගෙන්වා තනතුරු වලින් හා ඔවුන්ට සුදුසු වැටුප් වලින් ද සංග්‍රහ කළේ ය. වංශ කථා වල දැක්වෙන ඉහත සඳහන් කරුණු තත් කාලීන සෙල් ලිපි වලින් ද අනාවරණය වෙයි. වංශ කථා වල සාමාන්‍ය වශයෙන් ලියවී තිබෙන කරුණු පිළිබඳ සම්පූර්‍ණ පැහැදිලි විස්තර දැක හැක්කේ සෙල් ලිපි වලින් බැව් මේ තාක් සොයා ගෙන තිබෙන සෙල් ලිපි කීපය පරීක්‍ෂා කිරීමෙන් ප්‍රකට වන වැදගත් කරුණකි. ලක්දිව පුරා විසිර පැවති වෛද්‍ය ශාලාවන්හි පාලන ක්‍රමය පිළිබඳ කරුණු ඇතුළත් වී ඇති, මේ තාක් සොයාගෙන නැති ඒ ඉතිරි සෙල් ලිපි රාශිය ද සොයා ගැණීමෙන් පසු අපේ පැරණි වෛද්‍ය සේවය පිළිබඳ පැහැදිලි වාර්තාවක් ලංකාවාසීන් ඉදිරියට පැමිණෙනු ඇත.</p>
+
+<p>1. සිව් වැනි කාශ්‍යප රජුගේ කිරිඛත් වෙහෙර ශිලා ලිපිය.</p>
+
+<p>2-3. එ ම ශතවර්ෂයටම අයත් <b>සෙනල් නකන් නමැත්තාගේ හා දෝතිවලංක</b> නමැත්තාගේ සෙල් ලිපි දෙක.</p>
+
+<p>4. පස් වැනි කාශ්‍යප රජුගේ මැදිරිගිරි ගල් කණු ලිපිය</p>
+
+<p>5. ඔහුගේ ම අභයගිරි විහාර සෙල් ලිපිය</p>
+
+<p>6. මිහින්තලා කන්ද පාමුල පිහිටි දොරවුපාල රූපයේ කොටා තිබෙන ශිලා ලේඛනය</p>
+
+<p>7. සිව් වැනි මිහිඳු රජුගේ අභයගිරි විහාර සෙල් ලිපිය</p>
+
+<p>8. ඔහුගේ ම මිහින්තලා ශිලා ලිපිය</p>
+
+<p>9. මහ පරාකුම්බා රජු කල සුළුබදනා නම් නිලධාරියෙකු විසින් අනුරපුර මල්වතු ඔය අසල පිහිටු වන ලද සෙල් ලිපිය</p>
+
+<p>දැනට සොයාගෙන තිබෙන මේ සෙල් ලිපි වලින් ලංකාවේ පෙර පැවති ආරෝග්‍ය ශාලා වල පාලනය — සේවක පිරිස හා නඩත්තු කිරීම පිළිබඳ හැම දෙයක් ම පැහැදිලි වෙයි.</p>
+
+<img src="history-1.png" alt="history image 1" style="width: 100%; max-width: 400px; height: auto; display: block; margin: 20px auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+
+<p>එ කල බොහෝ භික්‍ෂූන් වහන්සේලා විසූ සංඝාරාම වලට යා බද ව උන්වහන්සේලාගේ ප්‍රයෝජනය පිණිස ආරෝග්‍ය ශාලා තිබුන බැව් මේ ශිලා ලිපි වලින් පෙනේ. ඒවායේ වසන රෝගී භික්‍ෂූන්ට ගිහි උපස්ථායකයන් මෙන් ම පැවිදි උපස්ථායකයන් වහන්සේලා ද උපස්ථාන් කරන්නට ඇතුවාට සැකයක් නැත. බුදු රජානන් වහන්සේ ගිලානොපස්ථානයෙහි අනුසස් වදාරා ඇති හෙයිනි.</p>
+
+<p>එසේ ම ප්‍රධාන නගර වල භික්‍ෂූන් වහන්සේලාගේ හා (අනගාරිකා) උපාසක-උපාසිකාවන්ගේ ප්‍රයෝජනය පිණිස වෙන් වෙන් වූ රෝහල් තිබුන බව ත් ඒවායේ පාලනය රජය මගින් හා සද්භාවතුන් ගෙන් ලැබුන පරිත්‍යාගවලිනුත් සිදු වූ බව ත් මේ ලිපි වල සඳහන් ව ඇත. (එහෙත් මේ කල භික්‍ෂූන් වහන්සේලා වෙනුවෙන් වෙන ම ඔසු හල් තබා, රජයේ රෝහල් වල උන්වහන්සේලා වෙනුවෙන් වෙන් වූ උපස්ථාන ශාලා (වාට්ටු) හෝ නැත්තේ මිසදිටු පාලනයේ ආභාසයෙන් තාම ත් මේ ම දිවයින වැසී තිබෙන නිසා ය.)</p>
+
+<p>පස් වැනි කාශ්‍යප රජුගේ මැදිරිගිරි ශිලා ලිපියෙහි “එහි වූ සංඝාරාමයට යා බද ව පිහිටි ආරෝග්‍ය ශාලාවට, එ ම සංඝාරාමයට අයත් ඉඩම් බදු කරන්නන් විසින් එ ම ඉඩම් වල හදිසි අනතුරු වලින් මැරෙන එළුවන් හා කුකුලන් සැපයිය යුතු බව” සඳහන් ව තිබේ. ප්‍රාණඝාත අකුශලයට ත් අසු නොවන පරිදි ආරෝග්‍ය ශාලාවේ නේවාසික ඇතැම් රෝගීන්ගේ දෛනික ආහාර සඳහා අවශ්‍ය මාංශ වශයෙන් මේ ම <b>ත්‍රිකෝටි පාරිශුද්ධ</b> මාංශය ම ලබාගත් බව ත් මෙයින් පෙනේ. එ කල ආගම ත් රකිමින් වෙද කම ත් නො අඩුවලෙස කළ බවට මෙය කදිම නිදසුනකි. (රට ඔසුහල් වලින් බෝවන මස් මාළු පිස්සුව අපේ පැරණි රෝහල්වල තිබුනේ නැත. අහිංසක ආහාර-පාන වලින් රෝග සුවකල ඒ පැරණි වෛද්‍යවරයෝ අවශ්‍ය ම අයට පමණක් මෙසේ ලබාගත් මස්-මාලු දුන්හ.)</p>
+
+<p>පක්‍ෂාඝාත වැනි අසාධ්‍ය රෝග වලින් පෙලෙන රෝගීන් මහා ස්වේදයෙන් ස්වේද කිරීම හා බෙහෙත් ඔරුවෙහි බහාලීම ත් එකල පැවති ප්‍රත්‍යක්‍ෂ වෛද්‍ය ක්‍රම දෙකකි. මෙයින් මහා ස්වේදය බුදුරජානන් වහන්සේ විසින් නියම කර වදාරණ ලද්දකි.</p>
+
+<img src="history-2.png" alt="history image 2" style="width: 100%; max-width: 400px; height: auto; display: block; margin: 20px auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+
+<p>වාත රෝගීන් සඳහා හැම රෝහලක ම මිනිස් සිරුරක හැඩහුරු කම අනුව සකස් කල බෙහෙත් ඔරුවක් ද විය. ලී-මැටි-ලෝහ හා ගල් වලින් තැනු ඒ ඔරු වලින් දැනට ඉතිරිව ඇත්තේ ගල් වලින් තැනු ඒවා පමණකි. ඒ ඔරු පැරණි රෝහල් තිබුනු තැන් අපට පෙන්වාදෙන සලකුණු වශයෙන් සැලකුව ද ප්‍රයෝජනවත් ය.</p>
+
+<h4 style="color: var(--accent-green); margin-top: 25px; font-size: 18px; text-align: center;"><b>පැරණි ආරෝග්‍ය ශාලාවල තත්වය</b></h4>
+
+<p>සිව් වැනි මිහිඳු රජුගේ මිහින්තලා ශිලා ලිපියෙහි සඳහන් වන මිහින්තලා සංඝාරාමස්ථ ආරෝග්‍ය ශාලාවේ නටබුන් මිහින්තලා කන්ද නගින විට පිය ගැට පෙල පසෙක දී දැක්ක හැක. ගරා වැටී තිබෙන ඒ ගොඩනැගිල්ලේ තත්ත්‍වය ගැන පරීක්‍ෂාවෙන් බලන විට එය ද නවීන ක්‍රමානුකූල ලෙස ගොඩනගා ඇති රෝහලකට නො දෙවෙනි වන සේ ගොඩනගන ලද මහල් කීපයකින් යුත් වඩා ශක්තිමත් සෙල් මුවා පගයක් බැව් නිගමනය කිරීම අපහසු කරුණක් නොවේ.</p>
+
+<p>මේ කරුණු අනුව සලකන විට <b>සූතිකාගාර-සත්ත්‍රාගාර-පශු වෛද්‍යාගාර</b> ඇතුළු මහාරෝග්‍ය ශාලාවන් ගෙන් යුත් ජාතික සංස්කෘතිය ත්, දේශීය සභ්‍යත්වය ත්, ආගමික පරිසරය ත් රැකෙන පරිදි ගොඩ නැගුනු සකලාංග සම්පූර්‍ණ වෛද්‍ය සේවයක් පෙර අප සතුව පැවති බවට කිසිම සැකයක් නැත.</p>
+
+<p>(අතීත සිද්ධි මෙසේ වුව ද දැනට මෙ ම දිවයිනෙහි තිබෙන්නේ විජාතික සංස්කෘතිය, විදේශීය සභ්‍යත්වය, හා මිථ්‍යා දෘෂ්ටිය රැකෙන පරිදි ස්වදේශීය ධනයෙන් ගොඩ නැගුනු විදේශීය ලක්‍ෂණයන්ගෙන් අනූන මහා වෛද්‍ය සේවයකි. මේ ඇද කුද මගහරවා ගැනීමේ ශක්තිය ඇත්තේ ජාතික හැඟීම් ඇති මඟ පෙන්වන්නකුට පමණකි.)</p>
+
+<div style="font-family: 'Noto Sans Sinhala', sans-serif; line-height: 1.8; color: #333; text-align: justify;">
+
+    <h3 style="color: var(--primary-green); text-align: center; border-bottom: 1px solid #ccc; padding-bottom: 5px;">ලංකාවේ (ලියන ලද) පැරණි වෙද පොත්</h3>
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 20px;">
+        <div style="width: 48%;">
+            <ol style="margin: 0; padding-left: 20px; list-style-type: decimal;">
+                <li>කුමාරතන්ත්‍ර ය</li>
+                <li>අර්‍ක ප්‍රකාශ ය</li>
+                <li>නාඩි ප්‍රකාශ ය</li>
+                <li>උඩිස් තන්ත්‍ර ය</li>
+                <li>සාරාර්‍ත්‍ථ සංග්‍රහව</li>
+                <li>රස ප්‍රදීප ය</li>
+                <li>ප්‍රයෝගාර්‍ණව ය</li>
+                <li>ප්‍රයෝග රත්නාකර ය</li>
+                <li>ද්‍රව්‍යාවලි ය</li>
+                <li>පජ් සන්ත ය</li>
+                <li>ප්‍රයෝග කෝෂ ය</li>
+                <li>භෙසජ්ජ මඤ්ජුසාව</li>
+                <li>යෝගාර්‍ණවය</li>
+                <li>ප්‍රයෝගරත්නාවලි ය</li>
+                <li>ප්‍රාණ ගුඪි ය</li>
+                <li>ප්‍රයෝග කෝෂ ය</li>
+                <li>බින්දුසාර ය</li>
+                <li>ප්‍රයෝග සංග්‍රහව</li>
+                <li>බුඬවෙදෙහ ය</li>
+                <li>භිෂක් මුෂ්ටි ය</li>
+                <li>මහායාන ය</li>
+                <li>භිෂක් මත ය</li>
+                <li>මූලාගම ය</li>
+                <li>යෝගමාලාව</li>
+                <li>යෝග ශතක ය</li>
+                <li>යෝග සමුච්ච ය</li>
+                <li>සාරසංක්‍ෂෙප ය</li>
+                <li>ප්‍රයෝග සමුච්ච ය</li>
+                <li>යෝගාගිනි ය</li>
+                <li>වරසාරාර්‍ත්‍ථ සංග්‍රහව(සාරාර්‍ත්‍ථ සංග්‍රහ සන්න ය)</li>
+                <li>සාරසංග්‍රහව</li>
+                <li>නාගවීදි ය</li>
+                <li>සිද්ධිසාර ය</li>
+                <li>වර්යොගසාර ය</li>
+            </ol>
+        </div>
+        <div style="width: 48%;">
+            <ol start="35" style="margin: 0; padding-left: 20px; list-style-type: decimal;">
+                <li>යෝගරත්නාකර ය</li>
+                <li>කරඹගලේ අත් වෙද පොත</li>
+                <li>යෝගපිටක ය</li>
+                <li>ඉත්තෑගලේ අත්වෙද පොත</li>
+                <li>චින්තාමණී ය</li>
+                <li>ශ්‍රී රත්නසේකරගේ චිකිත්සා පොත</li>
+                <li>රජගෙයි ඇස් වෙද පොත</li>
+                <li>අභිනව මාධව නිදාන ය</li>
+                <li>ශ්‍රී වීරපරාක්‍රම නරේන්ද්‍රසිංහ රාජ වෛද්‍යවරයාගේ අත් වෙද පොත</li>
+                <li>කැඩුම්–බිඳුම් වෙද පොත</li>
+                <li>වර්යෝග සිතුමිණ</li>
+                <li>භෙසජ්ජ මඤ්ජුසා සන්න ය (ශ්‍රී ශරණංකර සංඝරාජ)</li>
+                <li>වෛද්‍ය චින්තාමණී ය</li>
+                <li>ගෙඩි වෙද පොත</li>
+                <li>යෝගධාරණී ය</li>
+                <li>යෝගසාර ය</li>
+                <li>ගව වෙද පොත</li>
+                <li>ඇහැලෙපොල අධිකාරමතුමා ගේ අත් වෙද පොත</li>
+                <li>මඩුවන්වෙල අලි වෙද පොත</li>
+                <li>මාකඳුරේ අලි වෙද පොත</li>
+                <li>හිඟුරේ පිස්සුබළු-පිස්සු මී විෂ වෙද පොත</li>
+                <li>පඬුවස් නුවර කැඩුම් –බිඳුම් වෙද පොත</li>
+                <li>වාගිරිගල සර්ප වෙද පොත</li>
+                <li>සුළුගුළු පීනස් වෙද පොත</li>
+                <li>දෙරනියාවේ ඇස් වෙද පොත</li>
+                <li>මාරපණ පිස්සු වෙද පොත</li>
+                <li>මාරපණ මීමැස්මොර (අපස් මාර) වෙද පොත</li>
+            </ol>
+        </div>
+    </div>
+
+    <p style="margin-top: 20px;">සංස්කෘත-පාලි-සිංහල භාෂා වලින් ලියන ලද මේ පොත් වලින් මුද්‍රණය වී ඇත්තේ ඉතා ස්වල්පයකි. එයිනු ත් පොත් 7 ක් පළ කරවන ලද්දේ මා විසින් ය.</p>
+
+    <h4 style="color: var(--accent-green); margin-top: 25px; font-size: 18px; text-align: center;"><b>වෛද්‍ය ශාස්ත්‍රයේ දියුණුව</b></h4>
+
+    <p>වෛද්‍ය සේවය මෙන් ම වෛද්‍ය ශාස්ත්‍රය ද ලක් දිව ඉතා දියුණු තත්ත්‍වයක පැවති බැව් පොළොන්නරුවෙන් අවසන්වුනු ශාස්ත්‍රාලෝකය නැවත ත් දැල්වෙන සමයක (දඹදෙනි සමයේ දී) පස්මූල පිරිවෙන් හිමියන් විසින් ලියන ලද “භෙසජ්ජ මඤ්ජුසා” නමැති පාලි ග්‍රන්ථයෙන් පෙනේ. පද්‍යති සම සැටකින් අවසන් වන ඒ පොත සකස් කිරීමේදී—</p>
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 20px;">
+        <div style="width: 48%;">
+            <ol style="margin: 0; padding-left: 20px; list-style-type: decimal;">
+                <li>අග්නිවේශ ය</li>
+                <li>අමින ප්‍රභෙද ය</li>
+                <li>අමෘත මාලාව</li>
+                <li>අෂ්ටාංග සංග්‍රහව</li>
+                <li>අසිත සංහිතාව</li>
+                <li>ආලම්බායන ය</li>
+                <li>ඖරබභ්‍යය ය</li>
+                <li>කාකනීය ය</li>
+                <li>කාත්‍යායනීය ය</li>
+                <li>කාශ්‍යපෙය ය</li>
+                <li>කුමාර සංහිතාව</li>
+                <li>ක්‍ෂපණ පුරාණ ය</li>
+                <li>ඛරනාද ය</li>
+                <li>ඛරපාණීය ය</li>
+                <li>ගෞතමෙය ය</li>
+                <li>චක්‍රබුසෙන ය</li>
+                <li>චණ්ඩ කාශ්‍යපෙය ය</li>
+                <li>චන්ද්‍රට ය</li>
+                <li>චරක ය</li>
+                <li>චිකිත්සා කලිකාව ය</li>
+                <li>ජතුකර්‍ණ්‍ය ය</li>
+                <li>ද්‍රව්‍යාවලි ය</li>
+                <li>නාගාර්‍ජුන ය</li>
+                <li>නාරායනීය ය</li>
+                <li>පජ් සන්ත ය</li>
+                <li>ප්‍රාණ ගුඪි ය</li>
+                <li>ප්‍රයෝග කෝෂ ය</li>
+                <li>ප්‍රයෝග රත්නාකර ය</li>
+                <li>ප්‍රයෝගරත්නාවලි ය</li>
+                <li>ප්‍රයෝග සංග්‍රහව</li>
+                <li>ප්‍රයෝගාර්‍ණව ය</li>
+                <li>බාහට ය</li>
+            </ol>
+        </div>
+        <div style="width: 48%;">
+            <ol start="33" style="margin: 0; padding-left: 20px; list-style-type: decimal;">
+                <li>බින්දුසාර ය</li>
+                <li>බුඬ වෙදෙහ ය</li>
+                <li>භද්‍ර ශෞනකීය ය</li>
+                <li>චිකිත්සාමෘත ය</li>
+                <li>භාරද්වාජ ය</li>
+                <li>භාලුක ය</li>
+                <li>භිෂක් මත ය</li>
+                <li>භිෂක් මුෂ්ටි ය</li>
+                <li>භෙල ය</li>
+                <li>භොජරාජ ය</li>
+                <li>මහා කාශ්‍යපෙය ය</li>
+                <li>මහායාන ය</li>
+                <li>මාර්කඬ මත ය</li>
+                <li>මූලාගම ය</li>
+                <li>යෝග මාලාව</li>
+                <li>යෝග ශතක ය</li>
+                <li>යෝග සමුච්ච ය</li>
+                <li>යෝගාගිනි ය</li>
+                <li>වට්ටකාහ ය</li>
+                <li>වෘඬකශ්‍යපි ය</li>
+                <li>වරරුචි ය</li>
+                <li>වෛද්‍යපී ය</li>
+                <li>විදෙහන ය</li>
+                <li>සාරසංග්‍රහව</li>
+                <li>සාරාර්‍ත්‍ථ සංග්‍රහව</li>
+                <li>සිද්ධයෝග ය</li>
+                <li>සිද්ධයෝග සමුච්ච ය</li>
+                <li>සුශ්‍රැත බාහට ය</li>
+                <li>සුශ්‍රැත ය</li>
+                <li>හරිශ්චන්ද්‍ර ය</li>
+                <li>හාරීත ය</li>
+                <li>හිරණ්‍යාක්‍ෂ ග</li>
+            </ol>
+        </div>
+    </div>
+
+    <p style="margin-top: 20px;">යන මේ පොත් හැට හතරෙ (64)න් ඖෂධ යෝග (වට්ටෝරු) දෙ සිය හත (207) ක් රැගෙණ තිබෙන බැව් එහි ම දක්වා තිබේ. දඹදෙණි සමයේ වෛද්‍ය ශාස්ත්‍රය හදාරනුවන් භාවිත කරණ ලද මේ පොත් වලින් වැඩි හරියක් ගැන කිසිම තොරතුරක් දැනගන්නට නැත. ඒ පොත්වල සඳහන් ඖෂධයෝග පාලි භාෂාවට පෙරලා ගාථා වශයෙන් නිබන්ධනය කර තිබෙන හෙයින් අභාවයට ගොස් ඇති ඒ පොත් වල තත්වය හෝ කවර භාෂාවකින් ලියන ලද ඒවාදැ යි දැන ගැනීමට පවා ක්‍රමයක් නැත.</p>
+
+    <p>එහෙත් ඒ පොත් වලට තබා තිබෙන නාමයන්ගේ ස්වරූප ගැන සලකා බලන විට වැඩි හරියක් ම ලංකාවේ දී ත්, ඉතිරි හරිය ඉන්දියාවේ දී ත්, ලියන ලද ඒවා බැව් සිතීමට ඉඩ තිබේ.</p>
+
+    <p>ලක් දිව හෝ දඹදිව නැති මේ පොත් වල පිටපත් වලින් සමහරක් සතුරු ආක්‍රමණ වල දී විනාශ වන්ට ත්, ඉතිරි හරිය පොත් එකතු කරන්නන්ගේ මාර්‍ගයෙන් විදේශ වල පුද්ගලයන් හා පුස්තකාල සතුව ඇතුවාට ත් කිසි ම සැකයක් නැත.</p>
+
+   
+
+</div>
+
+
+
+          `
+        },
+
+        author: {
+            title: "කර්තෘ සටහන",
+            body: `
+
+ <h4 style="color: var(--accent-green); margin-top: 25px; font-size: 18px; text-align: center;"><b>ආයුර්වේද වෛද්‍ය ශබ්ද කෝෂ ය</b></h4>
+
+    <p>සංස්කෘත - හින්දි - වංග - හා ඉංග්‍රීසි යන භාෂාවලින් ඉන්දියානු ඖෂධ වර්ග පිළිබඳ ව ලියන ලද ශබ්දකෝෂ මහත් රාශියක් ඇති මෙකල ආයුර්වේද වෛද්‍ය ශබ්ද කෝෂයක් සිංහලයෙන් පිළියෙල කිරීම භාරදූර කාර්‍ය්‍යක් නොවේ.</p>
+
+    <p>මතභේද සහිත වූ ත් දුර්ලභවූ ත්, වඩා ප්‍රයෝජනවත් වූ ත් ඖෂධ වර්ග වල ඡායාරූප සහිත විශෙෂ හැඳින්වීම් ද ඒ පොත් වල ඇත. එසේ ම ඒ ඒ වෘක්‍ෂ ලතා ආදිය කවර පවුලකට අයත් දැයි බේරුම් කර ගැනීමට පහසුවන පරිදි ලැටින් භාෂාවෙන් ව්‍යවහාර කරණ වචන ද එයින් පොත් කීපයක ම තිබේ.</p>
+
+    <p>ඉහත සඳහන් භාෂාවලින් ලියා තිබෙන ඉන්දියානු අකාරාදි හා ද්‍රව්‍ය ගුණ නිඝණ්ඩු කීපය මේසයක් මත තබා ගෙණ නිවිහැනසිල්ලේ පුටුවක් මත වාඩිවී සිංහලයෙන් ආයුර්වේද (සංස්කෘත) ශබ්ද කෝෂයක් පිළියෙල කළ හැකි යි. එය එ පමණ භාරදූර වැඩක් නොවන බැව් මා කියන්නේ ඒ නිසා ය.</p>
+
+    <h4 style="color: var(--accent-green); margin-top: 25px; font-size: 18px; text-align: center;"><b>දේශීය වෛද්‍ය ශබ්ද කෝෂ ය.</b></h4>
+
+    <p>ලංකාවේ දේශීය වෙදකම පිළිබඳ ව ශබ්ද කෝෂයක් පිළියෙල කිරීම පොත් පත් පෙරළීමෙන් පමණක් නිවිහැනසිල්ලේ කළ හැකි පහසු වැඩක් නොවේ. දේශීය (සිංහල) භාෂාව මෙන් ම දේශීය වෙදකම ද අවුරුදු දහස් ගණනක් පැරණි ය. ඈත අතීතයෙහි යම් යම් ඖෂධ වර්ග වලට ව්‍යවහාර කළ නම් මධ්‍යකාලීන යුගයේ දී විදේශිකයන් ගේ බලපෑම් ආදි නොයෙක් කාරණ නිසා වෙනස් ව තිබේ. එ ම ඖෂධ වර්ග ම මෙකල ඊටත් වඩා වෙනස් නම් වලින් හැඳින් වේ යි.</p>
+
+    <p>පැරණි දේශීය වෙදකමේ පරම්පරා වශයෙන් එන ඇතැම් හස්‍යසාර ඖෂධ වලට ලැටින් වචන තබා සංස්කෘත වචන වත් සොයාගන්නට නැත. ඒ ඖෂධ වර්ග ගැන ඉන්දියානුවන් තුල හෝ යවනයන් තුල දැනීමක් නොතිබුන හෙයිනි. එසේ ම ඇතැම් ඖෂධ වර්ග 1. උතුරුමැද, 2. වයඹ, මධ්‍යම, ඌව උතුර, 3. ඌව දකුණ, ගිරුවා, දකුණු, 4. සපරගමු, බස්නාහිර, වශයෙන් එක ම ලංකාවේ ප්‍රදේශ හතරක හතරාකාරයකින් හැඳින් වේ යි.</p>
+
+    <p>මේ හැර <b>කඩුළු කඩුප්පුවා, වෙදරාලගෙ මෝ, සමසක් පිපෙනා මල්, භූමි අවතාර, පඹබැඳි ආරච්චිල</b> ආදි රහස් බෙහෙත් වට්ටෝරුවල එන ගුඪාර්‍ත්‍ථ (අන්ධ්‍යය සැඟවූ = ප්‍රහෙලිකා) නම් ද තිබේ. මේ වචන වැඩි වශයෙන් යෙදී ඇත්තේ පැරණි දේශීය වෙදකමට අයත් සර්ප විෂ - කැඩුම් බිඳුම් - මාලේ (ප්‍රදර), අතිසාර, සෙංගමාල (කාමිලා) හා ජලභීතිකා (පිස්සුබළු) උමතුවර පිළිබඳ ව ප්‍රතිකාර ලියා තිබෙන රහස් බෙහෙත් වට්ටෝරු වල ය.</p>
+
+    <h4 style="color: var(--accent-green); margin-top: 25px; font-size: 18px; text-align: center;"><b>මේ ශබ්දකෝෂය සකස් කළ හැටි</b></h4>
+
+    <p>පළමුවෙන් ම ඉන්දියාවේ හා ලංකාවේ මුද්‍රිත පොත් කියවා බලා මේ රටේ වෙදකමට අවශ්‍ය වචන එකතු කළෙමි. දෙවෙනි ව මේ තාක් මුද්‍රණය වී නැති වෙදපොත් - වට්ටෝරු වෙද පොත්-බෙහෙත් වට්ටෝරු හා බෙහෙත් වදුල් පොත් ද එකතු කර කියවා බලා දුරවබෝධ වචන එකතු කළෙමි.</p>
+
+    <p>ඉන්පසු චිත්‍ර ශිල්පියෙක් හා ආධාරකාරී කීප දෙනෙක් ද කැටුව ලංකාවේ නොයෙක් පළාත්වල ඇවිද බෙහෙත් වර්ග ගැන සාකච්ඡා කිරීම් ත් මතභේද සහිතවූ ද දුර්ලභවූ ද රහස් බෙහෙත් වශයෙන් පවතින්නාවූ ද ඖෂධ වර්ග වල ලක්‍ෂණාදිය සහිත චිත්‍ර පිටපත් කර වීමත් කළෙමි. මෙහි ඇතුළත් වන චිත්‍ර අතුරෙන් අබින්, සුං, වච්චනාභි, ඉන්දියානු ගොඩකඳුරු යන හතර වර්ගය හැර ඉතිරි සියල්ල ම ඒ ඒ වෘක්‍ෂ ලතාදිය ඉදිරියෙහි තබා අඳින ලද නියම සටහන් ය.</p>
+
+    <p>මේ සියල්ල සූදානම් කර අතට ගෙන පොතේ වැඩ ආරම්භ කොට පොත ලිවීම ත්, මුද්‍රණය ත් එක වරම නිම කළෙමි. දේශීය වෛද්‍ය ශබ්ද කෝෂයක් ලිවීම එපමණක් පහසු නැත කීවේ ඉහත සඳහන් දුෂ්කර කම් නිසා ය.</p>
+
+    <h4 style="color: var(--accent-green); margin-top: 25px; font-size: 18px; text-align: center;"><b>අප්‍රසිද්ධ වචන හා මගේ පරමාර්‍ත්‍ථය.</b></h4>
+
+    <p>වෙනත් භාෂාවල වචන තත් සම - තත් භව වශයෙන් තවත් භාෂාවක ව්‍යවහාරයට ඒමේදී “කලකට පෙර දෙළොපාරක තිබුන ගල් පතුරු කෑලි රළවේගය නිසා කල්යාමේදී රවුන්ගල් කැට වන්නාක් මෙන් ව්‍යවහාර කරන්නන්ගේ භාෂා නමැති රළවේගයට අසුවී නිෂ්පත්තිය පවා සොයාගන්නට බැරි තරමට කැඩී බිඳී රවුන්වී පොත්පත් වල හා ව්‍යවහාරයෙහි පවතී” යි. මට අසුවූ එබඳු හැම වචනයක්ම ඒ ඒ තැන්වල සටහන් කර තිබුන පිළිවෙලට ම මේ පොතට ඇතුලත් කර අදහස දුන්නෙමි. එසේ කළේ දේශීය ශබ්ද කෝෂයකින් අප කවුරුත් බලාපොරොත්තු වියයුතු ප්‍රධාන කාරණය දේශීය වෙදකමේ තිබෙන වචන තේරුම් ගැණීමට මගක් පාදා ගැනීම නිසා ය.</p>
+
+    <p>“මේ පොතේ සිංහල - පාලි - සංස්කෘත - ද්‍රවිඩ - හින්දි ආදි භාෂාවල අප්‍රසිද්ධ වචන ත් තිබෙනවා ය” කියා පාඨකයන් තුළ වැරදි අදහසක් ඇතිවීමට ඉඩ තිබේ. එ සේ ම මේ ගැන උරණ වන ඇතැම් භාෂාධරයන් මගේ ඇඟට කඩා පනින්නට ත් මෙය ඉඩ ඇති කරුණක් විය හැකි හෙයින් මගේ ආරක්‍ෂාව පිණිස පොතේ තත්වය විදහා පෑම මා සතු යුතුකම ය.</p>
+
+    <p>යාපුර, දකින්තරු, සුළු බූරුද, යහවපු, කිරබෙරිය, නවඟිලි, නිදලු ආදි පැරණි ශාස්ත්‍රීය වචන මෙන් ම වැහු, වාහුවාර, බකුල, කට්ඨායම්, කප්පතික්කිල, කැලෙන් කැපූ පොත්ත, අල්සෙරෙප්පාඩි, ආදී අප්‍රසිද්ධ ය වචනද මෙහි ඇතුළත් කර ඒවායේ අදහස් ද ප්‍රකාශ කර ඇත.</p>
+
+    <p>එසේ ම මුද්‍රිත පොත් වලට වඩා මුද්‍රණය නො වූ පුස්කොළ ලියවිලි (පොත්) වල ත්, වහරෙහි ත් ඇති වචන වැඩි වශයෙන් තිබෙන මෙහි ශබ්දකෝෂයෙන් පොත් බලන පිළිවෙල අනුව වචන අගට පොත් හැඳින් වීමේ ක්‍රමය නො යෙදුවෙමි. සොයා ගැණීමට පහසු නො වූ ඒ පොත් වලට ලකුණු දැමීමෙන් ලැබිය හැකි ප්‍රයෝජනයක් නැති හෙයිනි.</p>
+
+    <p>මේ රටේ පැරණි පුස්කොළ පොත පතක — බෙහෙත් වදුලක හෝ බෙහෙත් වට්ටෝරුවක තමන්ට නොතේරෙණ වචන තිබේ නම් මේ ශබ්ද කෝෂ ය පෙරලා බලන්න. ලක් දිව දැනට හැම තැනක ම ඉතිරි ව තිබෙන එ වැනි ලේඛණ වල ඇති නො තේරෙන වචන හැකිතාක් දුරට සොයා මේ පොතට ඇතුලත් කර ඇති හෙයින් බොහෝ විට එහි තේරුම හා යම්කිසි විස්තරයක් ද මේ පොතේ තිබෙන්ට පුළුවන.</p>
+
+    <h4 style="color: var(--accent-green); margin-top: 25px; font-size: 18px; text-align: center;"><b>මගේ නිගමනය</b></h4>
+
+    <p>වෙදකමක-භාෂාවක-ශාස්ත්‍රයක හෝ යම්කිසි කර්‍මාන්තයක කටයුතු සඳහා ව්‍යාප්ත ව පවත්නා වචන සංඛ්‍යාව ද ඒවායේ දියුණුව හෝ පරිහානිය මැන ගැනීමේ එක් ක්‍රමයකි. දේශීය වෙදකමට අයත් වචන මහත් රාශියක් තිබේ. මේ ගැන ලියවී තිබෙන ද්‍රව්‍යාවලි ය නමැති පොතට දඹදෙණි කාලයෙන් පසු කුමක් වී දැ යි දැන ගන්නට නැත. පැරණි පොත පතෙහි හා වහරෙහි තිබෙන වචන ප්‍රමාණවත් පරිදි එකතු කර අදහස් දැක් වූ වෙන පොතක් ද නැත.</p>
+
+    <p>කලක සිට පැවති මේ අඩුපාඩුව පිරිමැසාලීමේ අදහස මා තුළ ඇති වූයේ මීට සිව් වසකට පෙර ය. මේ සේ ම මෙම දිවයිනට අඩු -පාඩුවක් ව පැවති පාලි ත්‍රිපිටකයේ කටයුතු ප්‍රමාණවත් පරිදි අවසන් කර තබා මේ සඳහා ඉදිරිපත් වීමට කල්පනා කළෙමි.</p>
+
+    <p>මෙ වැනි පොතක් ලිවීමට මට වඩා සුදුසුකම් ඇති ගිහි-පැවිදි පින් වතුන් කොපමණවත් සිටින බව මම දනිමි. එහෙ ත් ඒ කිසිවෙකුගෙන් කලක සිට මේ රටට අවශ්‍ය ව තිබෙන දේශීය වෛද්‍ය ශබ්ද කෝෂයක් පිළියෙල කිරීමේ කාර්‍ය්‍ය ය ඉටු නො වූ නිසා හැකි පමණ උත්සාහ ගෙණ මෙහි වැඩ නිම කළෙමි. ඒ මගේ ප්‍රයත්නය කොපමණ දුරට සාර්‍ත්‍ථක වී තිබේ දැ යි තීරණය කිරීම පාඨකයන් සතු කාර්‍ය්‍යයකි.</p>
+
+    <h4 style="color: var(--accent-green); margin-top: 25px; font-size: 18px; text-align: center;"><b>ශාස්ත්‍රීය අනුස්මරණ</b></h4>
+
+    <p>පොත සකස් කිරීමේ දී රත්නපුර - ගම්පහ ශාඛා ඖෂධාලයාධිපති කවිරාජ් <b>පී. බී. ඒ. ජයවීර</b> වෙද මහත්මයා ඇතුළු ශාස්ත්‍රොදය පරිවෙණික ආදි ශිෂ්‍ය පිරිස ගෙන් හා පොතේ ඇතුලත් ඇතැම් ඖෂධ වර්ග තීරණකරණය කර ගැණීමේ දී ක්‍රියා කෞශල්‍යයෙන් මෙන් ම, පෙනුමෙන් ද ලංකාවේ ජීවමාන වෛද්‍ය සෘෂි වරයා ලෙස අප රට වාසීන්ගේ ගෞරවාදරයට භාජන වී සිටින ගම්පහ <b>සිඬායුර්වේද විද්‍යාලයාධිපති පණ්ඩිත ජී. පී. වික්‍රමාරච්චි උත්තර මන්ත්‍රී තුමා</b> ගෙන් ද ලැබුන උපකාර ඉතා අගය කොට සලකමි.</p>
+
+    <p>පොතේ පිට කවරය ඇතුළු වෘක්‍ෂ - ලතා වල චිත්‍ර සියල්ලක් ම පිළියෙල කළ රත්නපුරේ <b>බී. පී. සේනාරත්න</b> මහතා අතින් සිදු වූයේ ද වටිනා සේවයකි.</p>
+
+    <h4 style="color: var(--accent-green); margin-top: 25px; font-size: 18px; text-align: center;"><b>විශෙෂ ආධාර.</b></h4>
+
+    <p>මේ පොතෙන් ලංකාවාසීන්ගේ පොදු ප්‍රයෝජනය හා දේශීය වෙදකමේ දියුණුව ගැන ත් සිදුවන ඉමහත් සේවය වටහාගත් <b>සංස්කෘතික අමාත්‍යාංශය</b> මගින් රුපියල් පන් දහස (Rs, 5000/= ) ක් ද කෑගල්ල හා නුගේගොඩ ශ්‍රී ධන්වන්තරී ඖෂධශාලාධ්‍යාධිපති <b>ඩබ්ලිව්. ඒ. ඩිංගිරි මහත්මයා</b> වෙද මහත්මයාගෙන් රුපියල් පන් සියය (Rs, 500/=) ක් ද කලවානේ ඖෂධාලයාධිපති <b>ඇන්. ආර්. සයිමන්</b> වෙද මහත්මයා ගෙන් රුපියල් සියය (Rs, 100/=) ක් ද පරිත්‍යාග වශයෙන් ලැබුන බව ත් මේ ආධාර පොතේ මුද්‍රණ කටයුතු සඳහා බොහෝ ප්‍රයෝජනවත් වූ බව ත් තව ත් මේ සඳහා අවශ්‍ය හැම ආධාරයක් ම <b>කොළඹ සීමා සහිත ඇම්. ඩී. ගුණසේන සහ සමාගමෙන්</b> ලැබුන බවත් කෘතඥතා පූර්‍වක ව සඳහන් කරමි.</p>
+
+    <p style="text-align: right; margin-top: 20px;">
+        මෙයට,<br>
+        <b>පණ්ඩිත කිරිඇල්ලේ ඥාණවිමල ස්ථවිර.</b>
+    </p>
+
+    <p style="margin-top: 20px;">
+        1959-1-24.<br>
+        ශාස්ත්‍රොදය පිරිවෙණ,<br>
+        මාරපණ-රත්නපුර.
+    </p>
+`
+},
+        compiler: {
+            title: "සම්පාදකගේ සටහන",
+            body: "අතීතයේ සිට හෙළ වෙද පරපුර දිවි දෙවැනි කොට රැකගෙන ආ ඖෂධීය රහස් සහ හෙළ වෙදකමේ අසිරිය නූතන තාක්ෂණය සමඟ මුසු කර, මතු පරපුර වෙනුවෙන් සුරක්ෂිත කිරීම මෙම ඩිජිටල් ව්‍යාපෘතියේ ප්‍රධාන අරමුණයි. <br><br> <b>- රුවන් ගමරාලලාගේ</b>"
+        },
+        fav: { 
+            title: "ප්‍රියතම වචන", 
+            body: "මෙම පහසුකම ඊළඟ අප්ඩේට් එකෙන් බලාපොරොත්තු වන්න." 
+        },
+       
+        appendix: {
+            title: "උපග්‍රන්ථය",
+            body: `
+                <div style="font-family: 'Noto Sans Sinhala', sans-serif; line-height: 1.8; color: #333; text-align: justify;">
+                    
+                    <h3 style="color: var(--primary-green); border-bottom: 1px solid #ccc; padding-bottom: 5px;">විවිධ ඖෂධ සහ රෝග පිළිබඳ සටහන්</h3>
+                    
+                    <p><b>අම්ලෙබ</b> - කැකිරි ඇට</p>
+                    <p><b>අල්සෙරෙප්පාඩි</b> - (සෙරුප්පාඩි) සිහින් වළාවැන්න (හංසපාදි) මෙය සර්ප විෂට භාවිත කරණ බව සිහල වෙද පොත් වල පෙනේ. ව්‍යවහාරයට ඇතුලත් කරගැනීමට දුෂ්කරව තිබුණ ඖෂධයකි.</p>
+                    <p><b>උරාබිජ්කොල</b> - කැකිරි (ඒරවාරුක) කොළ</p>
+                    <p><b>කටුකින</b> - තුඹුරු (කින වර්ගයක්)</p>
+                    <p><b>කබරතෙල්</b> - විෂ සහිත සර්පයන්ගේ හිස් සහ පාසානම් පස් වර්ගය එකට මිශ්‍ර කර සිඳගන්නා විෂ තෙලක්.</p>
+                    <p><b>කැඳත්ත</b> - ? (විස්තරයක් නොමැත)</p>
+                    <p><b>කිරබෙරිය</b> - වනගතව වැවෙන ගසක්. එළබටු ගෙඩි පමණ වූ මේ ගසේ සුදුපාට ඇට වලින් සිඳගන්නා තෙල් ආහාර වශයෙන් ගනිති. මෙයින් තෙල් ස්වල්පයක් ලිප තබා රත් කළ විට භාජනය පුරා උතුරාසිටින නිසා මේ තෙල් ස්වල්පයකින් කැවුම් - කොකිස් - අග්මි - පප්පඩම් ආදි දේවල් මහත් රාශියක් බැඳගත හැක. මෙය ගොඩපර කොළ වැනි විශාල කොළ ඇති අඩි පණහක් පමණ උසට වැවෙන ලොකු ගසකි.</p>
+                    <p><b>කිරිමකුල්</b> - මකුල්ල ගස් වර්ගයක්. මේ ගසේ කඳ සහ කොළ මඳක් සුදු පාටින් යුක්තයි.</p>
+                    <p><b>කිලි - රෝගබීජ (විෂබීජ)</b> - අතීත ලංකාවෙහි විසූ විද්‍යාඥයන්, වෛද්‍යවරයන් හා සනීපාරක්‍ෂක උපදේශකයන් පමණක් නොව සාමාන්‍ය ජනයා ද රෝගබීජ ගැන දැනීමක් ඇතුව සිටි බව පෙනේ. සාමාන්‍ය වශයෙන් හැම රෝග බීජයකට ම <i>කිලි</i> යන නාමය එකල ව්‍යවහාර ව තිබුණත් වෙන් වෙන් වූ රෝගබීජ ගැන වෙන් වෙන් වශයෙන් දැන සිටිය බැව් වෙන් වෙන් වූ රෝග බීජ නාශක ක්‍රම පිළිපැදීමෙන් සිතිය හැක.</p>
+                    <ul>
+                        <li><b>1. මඟුල් කිලි</b> - මඟුල් කිල්ලට හා මාස් කිල්ලට භාජන වූ තැනැත්තියන් ගෙට යාබදව සෑදු කුඩා කුටියක නතර කර පිටතින් ආරක්‍ෂා තබා නියමිත දිනයෙහි ඉස් සෝදා නහවා සමාජයට ගනිති.</li>
+                        <li><b>2. මාස් කිලි</b></li>
+                        <li><b>3. මරණ කිලි</b> - මරණ කිල්ලක් ඇති වූ විට මළ සිරුර පිළිබඳ කටයුතු අවසාන කර එයට සහභාගි වූ අය අමුකහ-දෙහි මිශ්‍ර ජලය ඇඟ ගල්වා (ඉස් සෝදා) නහා පිරිසිදු හැඳ ඉන්පසු ගෙට ඇතුල් වෙති.</li>
+                        <li><b>4. රෝග කිලි</b> - අතිසාර-කොළරා-උණ සන්නිපාත-සරම්ප-පැපොල් ආදි රෝගීන් සිටින කාමර වලට කිලි නෑසීම සඳහා අමු කහ-අමු ගොම මිශ්‍ර ජලය- මීවදදාර (ගුරුන්ද) ජලය හා පාගිරි තෙල් ආදි විෂබීජ නාශක බෙහෙත් වර්ග ඉසිම. රෝග ස්පර්ශ වූවන්ගේ ආරක්‍ෂාව සඳහා, ගුරුන්ද හර-කෙම් කළ කළුවු බෝ පොතු හෝ මෑතුරු නොපෑහුන ගල්කැට ඇඟ බැඳීමත් කරති.</li>
+                    </ul>
+                    
+                    <p><b>කුකුල්පිබිය</b> - ?</p>
+                    <p><b>කෙනෙල් සාව්ව</b> - ක්‍ෂය රෝගය සඳහා ඉදුන සුවඳැල් කෙසෙල් ගෙඩි, එළගිතෙල්, මීපැණි ඇතුළු ඖෂධ වර්ග යොදා සකස් කරණ මෝදක රසායනය. (මෙය කෙසෙල්පට්ටා වලින් වියූ සාඩුවක් (තුවායක්) හෝ කෙසෙල් අළුවා කොවේ).</p>
+                    <p><b>කෙහෙලයි (කෙහෙලයි)</b> - ?</p>
+                    <p><b>කොරසැබියා වැල්</b> - කොරස වැල් (ඇඟේ ගෑවුනොත් සීරෙන පමණක් රළු කොළ ඇති වැටවල් ආදිය බැඳීමට ගන්නා ගොරහාඩි ගතියකින් (තද ගතියකින්) යුත් වැල් වර්ගයක්)</p>
+                    <p><b>කොරාසානි</b> - (පාරශිකයව) පර්සියානු අසමෝදගම්</p>
+                    <p><b>කොලදර</b> - නබි නම් සුවඳ ද්‍රව්‍යය (නියගස්)</p>
+                    <p><b>ගොනුකෑවැල්</b> - හැඩහුරු කමින් බදුල්ල කොළ වලට හෝ බළු දිවි (පතොක්) කොළ වලට සමාන අන්කාපාන කොළ පමණ ඝණකම ඇති කිරි ගොප්ප වැල් වර්ගයට අයත් වැලකි. මෙය ද කිරි ගොප්ප මෙන් ම ඇට පැස්සෙන බෙහෙතකි කකුළක් කැඩීම නිසා ඇවිදගන්ට නොහැකි වීමෙන් නිරාහාරව සිටි ගොනෙක් කෑමට කිසි දෙයක් නැතිකමට අසල තිබුණ මේ වැල් පඳුරක කොළ කෑවේලු. එයින් ම උගේ කැඩී තිබුණ කකුල පැස්සුනෙන් මෙයට ගොනුකෑවැල් යන නම ව්‍යවහාර වූ බැව් ගැමියෝ කියති. (කිරිගොප්ප ගැන 112 පිටේ තිබෙන ඡායාරූපය සහිත විස්තරය බලන්න.)</p>
+                    <p><b>ගොයදුන්</b> - ගෝපීචන්දන</p>
+                    <p><b>ගෝසාල වැල්</b> - ?</p>
+                    <p><b>තිත්තයින්කුඩ</b> - තිත්තයින් (කුඩා මත්ස්‍යයන්) ගේ සහ විෂ සහිත වෙනත් සර්පයන්ගේ හිස් (ඔළු) එකට දමා වියලා කුඩු කර සාදා ගන්නා විෂ වර්ගයක්.</p>
+                    <p><b>තුම්පත් කුරුදෙහි</b> - තුම්පත්කුරුඳු (තුම්පත්කුරුඳු) කුරුඳු වර්ගයක් නොව දෙහි වර්ගයකි. එක නැට්ටේ කොළ තුන බැගින් ඇති කොළ හා කුඩා රවුම් (කූරු) දෙහි ගෙඩි සැදෙන මේ ගසට මුල දී ව්‍යවහාර කර තිබෙන්නේ තුම්පත් කුරුදෙහි යන නාමය යයි පැරණි සිංහල වෙද පොත්වල තුම්පත්කුරුදෙහි නමින් ලියා තිබුණ වචනය මෑතකදී පිටපත් වූ ඒ පොත්වල ම තුම්පත් කුරුඳු කියා තිබෙන නිසා මේ ගැන කිසිම සැකයක් නැත. එහෙත් මේ ලිපි දෝෂය අවුරුදු තුන් සියයකට නො අඩු කාලයක සිටම ව්‍යවහාරයෙහි ආ බව පැරණි පොත් වලින් පෙනේ. මෙය කුරුඳු වර්ගයක් නොව පාගිරි වර්ගයක් ම බැව් මෙයට තබා තිබෙන (Limonia Alata) යන ලැටින් වචනයෙනු ත් සිතියහැක. තුම්පත්කුරුඳු ගැන ලියූ ඡායාරූප සහිත විස්තරයක් 223 පිටේ ඇත.</p>
+                    <p><b>දත්තරමුල්</b> - (නශ්‍ය බෙහෙතකි)?</p>
+                    <p><b>දලගිරි අඬන</b> - ලංකාවේ එක් පළාතක සකස් කරණ හලාහල විෂයක් වැනි විෂ වර්ගයක්.</p>
+                    <p><b>නරවැල්</b> - ලක්‍ෂකර්ණී = උඩරට පළාත් වල වැවෙන උණට හා ලේ විෂ වීමට පසස්නා ලද වැල් වර්ගයක්</p>
+                    <p><b>නාගිරිය</b> - නෙරිවිෂ</p>
+                    <p><b>පින්වල්ලි</b> - පික්මල්</p>
+                    <p><b>පොලව කණමැදිරියා</b> - මුවකිරිය (අහස කණමැදිරියා උඩවැඩියා ලෙසත්, පොලව කණමැදිරියා මුවකිරිය ලෙසත් පැරණිබෙහෙත් වට්ටෝරු පොත්වල නියමකර ඇතත් ඇතැම් අය අහස කණමැදිරියා වශයෙන් මුවකිරිය ත්, පොලව කණමැදිරියා වශයෙන් උඩවැඩියා ත්, ගණිති)</p>
+                    <p><b>රන්කැලිය</b> - එරබදු වර්ගයට අයත් විශාල ගසක්. (Butea Monosperma) මෙහි කොළ රත් කැන්ද කොළ වලට ප්‍රමාණයෙන් හා හැඩහුරුකමින් සමානය. එක නැට්ටේ කොළ තුන බැගින් ඇත. මල් රත් කතුරුමුරුංගා මල් වලට සමානයි. විල්ලුද පැහැයෙන් යුක්තයි. පොතු තද රත් පැහැයෙන් යුක්ත යි. කඳ සුදු පාට යි. අඩි හැටක් පමණ උසට වැවේ යි. මේ ගසේ පොතු විෂකපාල නමැති හැම සර්ප විෂයකට ම ගන්නා ගුලිය සෑදීමට යොදන ප්‍රධාන ඖෂධ කීපයෙන් එකකි. ගසේ සම්පූර්ණ සාරයම විෂ නාශක බලයෙන් යුක්ත වෙ යි.</p>
+                    <p><b>රියකොළ</b> - උඩැත්ත (උඩැත්තා)</p>
+                    <p><b>ලකදුරුදඬු</b> - ලා කඳුරු දඬු?</p>
+                    <p><b>ලාමාරක්ඇට</b> - ලා මහරක් ඇට?</p>
+                    <p><b>ලුණුමිදෙල්ල</b> - මහ (වල්) කොසඹ (මහනිම්බ) මෙය මිදෙල්ල නාමයෙන් හැඳින් වුව ද මිදෙල්ල වර්ගයට අයත් ගසක් නොවේ. කඳ-ගෙඩි-මල් හා කොළ ද හැම අතින් ම සමාන වන්නේ කොසඹ ගසට ය. මෙහි හැම කොටසක් ම කොසඹ වලට ත් වඩා තිත්ත ය. එම නිසා ප්‍රමාණයෙන් විශාල වූ මේ ගසට මහ(වල්)කොසඹ යන නාමය අන්වර්ථ වූවකි. කොසඹ මෙන් ම මෙය ද ජ්වර නාශක ඖෂධයකි. සන්නි පක්‍ෂයට මෙය ඖෂධයක් වශයෙන් දීමේ දී සලකා බැලිය යුතු වෙනත් බොහෝ කරුණු ඇත.</p>
+                    <p><b>වනමී</b> - වනගත ව වැවෙන මීගස් වර්ගයක්, මේ ගස් විශාල ය. කොළ මී කොළ වලට වඩා කුඩා ය. එපමණ උල් නැත. ගෙඩි මී ගෙඩි පමණ ඇත. එහෙත් මීගෙඩි වල මෙන් ඇතුලේ ඇට කිහිපයක් නැත. ඇත්තේ එක ඇටයක් පමණකි. මේ ඇට වලින් සිඳ ගන්නා තෙල් ද ආහාර පිණිස හා වාතාබාධ සඳහා ත් ගනිති.</p>
+                    <p><b>වනුන්</b> - ජලධර</p>
+                    <p><b>වල්ගා මිරිස්</b> - වල්මොලගු</p>
+                    <p><b>සබසසරණ</b> - මුඩමහණ (වෙල්මුඩ)</p>
+                    <p><b>සමසක් පිපෙනා මල්</b> - මුඩමහණ (වෙල්මුඩ)</p>
+                    
+                    <br>
+                    
+                    <div style="border: 2px dashed var(--primary-green); padding: 25px; text-align: center; border-radius: 12px; margin-top: 20px; background-color: #fdfbf7; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                        
+<img src="nayaka-himi.png" alt="ගරු කිරිඇල්ලේ ඥාණවිමල හිමි" style="width: 160px; height: auto; border-radius: 10px; margin-bottom: 15px; border: 3px solid var(--primary-green); box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+<h4 style="color: var(--accent-green); margin-bottom: 10px; font-size: 18px;">රත්නපුර — මාරපණ</h4>
+
+<p style="margin: 5px 0; color: #555;">ශාස්ත්‍රොදය පරිවෙණාධිපති</p>
+                        <h3 style="color: #d35400; margin: 12px 0; font-size: 22px;">රාජකීය පණ්ඩිත<br>කිරිඇල්ලේ ඥාණවිමල ස්ථවිර පාදයන් වහන්සේ</h3>
+                        <p style="margin: 5px 0; color: #555;">විසින්</p>
+                        <p style="font-weight: bold; margin: 12px 0; font-size: 16px;">අතිරේක උපග්‍රන්ථ ය<br>සහිත මෙම</p>
+                        <h4 style="color: var(--primary-green); margin: 12px 0; font-size: 20px;">දේශීය වෛද්‍ය ශබ්දකෝෂ ය</h4>
+                        <p style="margin: 5px 0; color: #555;">ශ්‍රී බුද්ධ වර්‍ෂයෙන් දෙ දහස් පන්සිය දෙකට පැමිණි<br>දුරුතු පුර පසළොස්වක් ලත් පොහෝ දින</p>
+                        <p style="font-weight: bold; color: #7f8c8d; margin: 12px 0;">(1959– ජනවාරි 24 සෙනසුරා දා)<br>රෑවු පසළොස් පැය වේලාවෙහි</p>
+                        <h3 style="color: #2c3e50; margin-top: 20px; font-size: 22px;">ලියා නිම කරණ ලදී</h3>
+                        
+                        <hr style="border: none; border-top: 1px solid #dcdde1; margin: 25px 0 20px 0;">
+                        
+                        <div style="background: rgba(27, 77, 62, 0.05); padding: 20px; border-radius: 8px; border-left: 5px solid var(--primary-green);">
+                            <h4 style="color: var(--primary-green); margin: 0 0 12px 0; font-size: 18px; font-weight: bold;">පසුවදන</h4>
+                            <p style="color: #34495e; font-size: 15px; line-height: 1.8; margin: 0 0 15px 0; text-align: justify;">
+                                ගමරාළලාගේ චාමින්ද රුවන් ගමගේ වන මා විසින් නවීන Gemini AI තාක්ෂණික උපකාරයෙන් පිළියෙල කළ, මෙම වටිනා ශබ්දකෝෂය තවත් වසර පන්දහසක් කල් පැවැතීම පිණිස ඩිජිටල් ලෝකයට මුදාහැරීම අරමුණු කර, 1959 දී  ලියූ මේ මහගු ලියැවිල්ලෙහි  මෙම ඩිජිටල් සංස්කරණය ධර්මදානය පිණිස වසර 67 පසුව , 2026 ක් වූ මැයි මස 01 වැනි පොහොය දින ජනසතු කරන ලදී.
+                            </p>
+                            <p style="color: #d35400; font-weight: bold; font-size: 14px; margin: 0;">
+                                (0760829235 - Ruwan Gamaralalage)<br>
+                                Digital Copyright &copy; 2026
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            `
+        },
+};
+
+    function showModal(key) { 
+        document.getElementById('modalTitle').innerText = infoData[key].title; 
+        document.getElementById('modalBody').innerHTML = infoData[key].body; 
+        document.getElementById('infoModal').style.display = "block"; 
+    }
+    function closeModal() { document.getElementById('infoModal').style.display = "none"; }
+</script>
+</body>
+</html>
